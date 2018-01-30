@@ -1,0 +1,41 @@
+After downloading the data, the data must be imported into RStudio for exploration.
+
+```{r}
+library(readr)
+HMXPC13_DI_v2_5_14_14 <- read_csv("C:/[filepath]/Hx-MITx Person Course AY2013/HMXPC13_DI_v2_5-14-14.csv")
+View(HMXPC13_DI_v2_5_14_14)
+```
+
+Ensure the data were read correctly into RStudio.
+```{r}
+## Review the first few rows of the dataset
+head(HXMITX)
+
+## Review the last few rows of the dataset
+tail(HXMITX)
+
+## Get summary information about the dataset
+summary(HXMITX)
+'''
+
+Fields:
+ 1. course_id (chr) identifies the institution.
+ 2. userid_DI (chr) identifieds the dataset and a random ID number.
+ 3. registered (int) identifies if a person is in the course (1).
+ 4. viewed (int) identifies those accessing the 'Courseware' tab within the edX platform.
+ 5. explored (int) indentifies those accessing at least half of the chapters in the Courseware.
+ 6. certified (int) identifies those earning a certificate. This is based on course grade and cutoff varies from 50%-80%
+ 7. final_cc_cname_DI (chr) is a mix of anonymized country names
+ 8. LoE (chr) highest level of education completed
+ 9. YoB (chr) year of birth of user
+10. gender (chr) gender of user
+11. grade (dbl) final grade of course for user
+12. start_time_DI (date) date of course registration
+13. last_event_DI (date) date of last interaction with course
+14. nevents (int) number of interactions with the course
+15. ndays_act (int) number of unique days student interacted with course
+16. nplay_video (int) number of video play events
+17. nchapters (dbl) number of Courseware chapters with which the student interacted
+18. nforum_posts (int) number of Discussion Forum posts
+19. roles (chr) identifies staff and instructors
+20. inconsistent_flag (int) identifies internally inconsistent records
