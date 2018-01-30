@@ -6,7 +6,7 @@ Creating new project to track progress while learning R and GitHub.
 The learning plan:
 1. Find open dataset of interest
 2. Import dataset into RStudio
-3. Explore dataset
+3. Exploratory data analysis
 4. Correct for data discrepancies
 5. Visualize data via either Shiny and/or Tableau Public (https://public.tableau.com/profile/matthew.hendrickson#!/)
 
