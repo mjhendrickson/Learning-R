@@ -1,0 +1,12 @@
+Selecting a dataset is a challenging experience when learning a new program.
+There is always the risk of selecting a dataset with too many issues.
+Or even selecting a dataset that is not of interest.
+
+To select a dataset for this example, I am selecting one I have used previously:
+The Harvard-MITx Person Course Academic Year 2013 De-Identified dataset, version 2.0.
+The dataset can be viewed and accessed here:
+https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/26147
+By rule, the dataset cannot be re-distributed.
+
+Per the description of the dataverse site:
+"This release is comprised of de-identified data from the first year (Academic Year 2013: Fall 2012, Spring 2013, and Summer 2013) of MITx and HarvardX courses on the edX platform along with related documentation. These data are aggregate records, and each record represents one individual's activity in one edX course. For more information about the existing analyses of these data and the first year of HarvardX and MITx courses, please see the HarvardX and MITx working paper "HarvardX and MITx: The first year of open online courses" by Andrew Ho, Justin Reich, Sergiy Nesterko, Daniel Seaton, Tommy Mullaney, Jim Waldo, and Isaac Chuang (http://papers.ssrn.com/sol3/papers.cfm?abstract_id=2381263). The first release of this dataset is the HarvardX-MITx Person-Course Academic Year 2013 De-Identified dataset, version 2.0, created on May 14, 2014. File name: HMXPC13_DI_v1_5-14-14.csv The md5sum for this release (HMXPC13_DI_v2_5-14-14.csv) is: 2b09c674af772d45dae429045cf7acfc (2014-05-24)"
