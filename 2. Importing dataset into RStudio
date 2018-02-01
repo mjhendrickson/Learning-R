@@ -1,11 +1,8 @@
-```{r}
 ## Import the data into RStudio via readr package
 library(readr)
 HXMITX <- read_csv("C:/[filepath]/Hx-MITx Person Course AY2013/HMXPC13_DI_v2_5-14-14.csv")
 View(HXMITX)
-```
 
-```{r}
 ## Ensure the data were read correctly into RStudio
 ## Review the first few rows of the dataset
 head(HXMITX)
@@ -15,4 +12,3 @@ tail(HXMITX)
 
 ## Get summary information about the dataset
 summary(HXMITX)
-'''
