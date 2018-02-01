@@ -1,1 +1,84 @@
-Shell for EDA
+## First raw attempt at bar charts.
+## Need to better handle fields with a large number of values.
+## Also need to rotate labels.
+
+########## Exploratory Data Analysis
+## Course ID
+ggplot(data = HXMITX) +
+  geom_bar(mapping = aes(x = course_id))
+
+## User ID
+ggplot(data = HXMITX) +
+  geom_bar(mapping = aes(x = userid_DI))
+
+## Registered
+ggplot(data = HXMITX) +
+  geom_bar(mapping = aes(x = registered))
+
+## Viewed
+ggplot(data = HXMITX) +
+  geom_bar(mapping = aes(x = viewed))
+
+## Explored
+ggplot(data = HXMITX) +
+  geom_bar(mapping = aes(x = explored))
+
+## Certified
+ggplot(data = HXMITX) +
+  geom_bar(mapping = aes(x = certified))
+
+## Country code
+ggplot(data = HXMITX) +
+  geom_bar(mapping = aes(x = final_cc_cname_DI))
+
+## Level of education
+ggplot(data = HXMITX) +
+  geom_bar(mapping = aes(x = LoE_DI))
+
+## Year of birth
+ggplot(data = HXMITX) +
+  geom_bar(mapping = aes(x = YoB))
+
+## Gender
+ggplot(data = HXMITX) +
+  geom_bar(mapping = aes(x = gender))
+
+## Grade
+ggplot(data = HXMITX) +
+  geom_bar(mapping = aes(x = grade))
+
+## Start time
+ggplot(data = HXMITX) +
+  geom_bar(mapping = aes(x = start_time_DI))
+
+## Last Event
+ggplot(data = HXMITX) +
+  geom_bar(mapping = aes(x = last_event_DI))
+
+## Number of Events
+ggplot(data = HXMITX) +
+  geom_bar(mapping = aes(x = nevents))
+
+## Number of Days
+ggplot(data = HXMITX) +
+  geom_bar(mapping = aes(x = ndays_act))
+
+## Number of video plays
+ggplot(data = HXMITX) +
+  geom_bar(mapping = aes(x = nplay_video))
+
+## Number of chapters
+ggplot(data = HXMITX) +
+  geom_bar(mapping = aes(x = nchapters))
+
+## Number of forum posts
+ggplot(data = HXMITX) +
+  geom_bar(mapping = aes(x = nforum_posts))
+
+## Roles
+ggplot(data = HXMITX) +
+  geom_bar(mapping = aes(x = roles))
+
+## Inconsistent Flag
+ggplot(data = HXMITX) +
+  geom_bar(mapping = aes(x = incomplete_flag))
