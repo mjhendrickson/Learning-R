@@ -1,84 +1,153 @@
 ## First raw attempt at bar charts.
 ## Need to better handle fields with a large number of values.
-## Also need to rotate labels.
+## Need to address N/A values.
+
 
 ########## Exploratory Data Analysis
 ## Course ID
 ggplot(data = HXMITX) +
-  geom_bar(mapping = aes(x = course_id))
+  geom_bar(mapping = aes(x = course_id)) +
+  scale_x_discrete(name = " ") + 
+  theme(axis.title.x = element_blank(),
+    axis.text.x = element_text(angle=90, vjust=0.5)) +
+  labs(title = "Course ID")
+
 
 ## User ID
 ggplot(data = HXMITX) +
   geom_bar(mapping = aes(x = userid_DI))
 
+
 ## Registered
 ggplot(data = HXMITX) +
-  geom_bar(mapping = aes(x = registered))
+  geom_bar(mapping = aes(x = registered)) +
+  theme(axis.title.x = element_blank()) +
+  labs(title = "Registered")
+
 
 ## Viewed
 ggplot(data = HXMITX) +
-  geom_bar(mapping = aes(x = viewed))
+  geom_bar(mapping = aes(x = viewed)) +
+  theme(axis.title.x = element_blank()) +
+  labs(title = "Viewed") 
+
 
 ## Explored
-ggplot(data = HXMITX) +
-  geom_bar(mapping = aes(x = explored))
+  geom_bar(mapping = aes(x = explored)) +
+  theme(axis.title.x = element_blank()) +
+  labs(title = "Explored")
+
 
 ## Certified
 ggplot(data = HXMITX) +
-  geom_bar(mapping = aes(x = certified))
+  geom_bar(mapping = aes(x = certified)) +
+  theme(axis.title.x = element_blank()) +
+  labs(title = "Certified")
+
 
 ## Country code
 ggplot(data = HXMITX) +
-  geom_bar(mapping = aes(x = final_cc_cname_DI))
+  geom_bar(mapping = aes(x = final_cc_cname_DI)) +
+  scale_x_discrete(name = " ") + 
+  theme(axis.title.x = element_blank(),
+        axis.text.x = element_text(angle=90, vjust=0.5)) +
+  labs(title = "Country Code")
+
 
 ## Level of education
 ggplot(data = HXMITX) +
-  geom_bar(mapping = aes(x = LoE_DI))
+  geom_bar(mapping = aes(x = LoE_DI)) +
+  scale_x_discrete(name = " ") + 
+  theme(axis.title.x = element_blank(),
+        axis.text.x = element_text(angle=90, vjust=0.5)) +
+  labs(title = "Level of Education")
+
 
 ## Year of birth
 ggplot(data = HXMITX) +
-  geom_bar(mapping = aes(x = YoB))
+  geom_bar(mapping = aes(x = YoB)) +
+  scale_x_discrete(name = " ") + 
+  theme(axis.title.x = element_blank(),
+        axis.text.x = element_text(angle=90, vjust=0.5)) +
+  labs(title = "Year of Birth")
+
 
 ## Gender
 ggplot(data = HXMITX) +
-  geom_bar(mapping = aes(x = gender))
+  geom_bar(mapping = aes(x = gender)) +
+  theme(axis.title.x = element_blank()) +
+  labs(title = "Gender") 
+
 
 ## Grade
 ggplot(data = HXMITX) +
-  geom_bar(mapping = aes(x = grade))
+  geom_bar(mapping = aes(x = grade)) +
+  theme(axis.title.x = element_blank()) +
+  labs(title = "Grade")
+
 
 ## Start time
 ggplot(data = HXMITX) +
-  geom_bar(mapping = aes(x = start_time_DI))
+  geom_bar(mapping = aes(x = start_time_DI)) +
+  scale_x_date (name = " ") + 
+  theme(axis.title.x = element_blank(),
+        axis.text.x = element_text(angle=90, vjust=0.5)) +
+  labs(title = "Start Time")
+
 
 ## Last Event
 ggplot(data = HXMITX) +
-  geom_bar(mapping = aes(x = last_event_DI))
+  geom_bar(mapping = aes(x = last_event_DI)) +
+  scale_x_date (name = " ") + 
+  theme(axis.title.x = element_blank(),
+        axis.text.x = element_text(angle=90, vjust=0.5)) +
+  labs(title = "Last Event")  
+
 
 ## Number of Events
 ggplot(data = HXMITX) +
-  geom_bar(mapping = aes(x = nevents))
+  geom_bar(mapping = aes(x = nevents)) +
+  theme(axis.title.x = element_blank()) +
+  labs(title = "Number of Events") 
+
 
 ## Number of Days
 ggplot(data = HXMITX) +
-  geom_bar(mapping = aes(x = ndays_act))
+  geom_bar(mapping = aes(x = ndays_act)) +
+  theme(axis.title.x = element_blank()) +
+  labs(title = "Number of Days") 
+
 
 ## Number of video plays
 ggplot(data = HXMITX) +
-  geom_bar(mapping = aes(x = nplay_video))
+  geom_bar(mapping = aes(x = nplay_video)) +
+  theme(axis.title.x = element_blank()) +
+  labs(title = "Number of Video Plays") 
+
 
 ## Number of chapters
 ggplot(data = HXMITX) +
-  geom_bar(mapping = aes(x = nchapters))
+  geom_bar(mapping = aes(x = nchapters)) +
+  theme(axis.title.x = element_blank()) +
+  labs(title = "Number of Chapters") 
+
 
 ## Number of forum posts
 ggplot(data = HXMITX) +
-  geom_bar(mapping = aes(x = nforum_posts))
+  geom_bar(mapping = aes(x = nforum_posts)) +
+  theme(axis.title.x = element_blank()) +
+  labs(title = "Number of Forum Posts") 
+
 
 ## Roles
 ggplot(data = HXMITX) +
-  geom_bar(mapping = aes(x = roles))
+  geom_bar(mapping = aes(x = roles)) +
+  theme(axis.title.x = element_blank()) +
+  labs(title = "Roles") 
+
 
 ## Inconsistent Flag
 ggplot(data = HXMITX) +
-  geom_bar(mapping = aes(x = incomplete_flag))
+  geom_bar(mapping = aes(x = incomplete_flag)) +
+  theme(axis.title.x = element_blank()) +
+  labs(title = "Incomplete Flag") 
