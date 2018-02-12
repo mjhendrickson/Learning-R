@@ -54,7 +54,7 @@ HXMITX$course <- substring(HXMITX$course,2) ## Removes 1st /
 HXMITX$course <- substring(HXMITX$course,1,nchar(HXMITX$course)-1) ## Removes 2nd /
 
 ## Create field "Term"
-HXMITX$term <- str_match(HXMITX$course_id,"/(.*?)/") ## Still includes / on both ends
+# PICK UP HERE --- INVESTIGATE REGEX
 
 
 
