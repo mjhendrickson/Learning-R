@@ -1,0 +1,56 @@
+## Only the 3rd attempt - with gsub - is ccurenlty working.
+## First two attempts included to show thought process.
+## Ideally, I would like to find a way to get mutate and ifelse to work
+
+
+## Gets every instance of HarvardX or MITx and prints it
+str_extract_all(HXMITX$course_id, 'HarvardX')
+str_extract_all(HXMITX$course_id, 'MITx')
+
+## Sets True/False for each case where it matches/does not match HarvardX or MITx
+str_detect(HXMITX$course_id, 'HarvardX')
+str_detect(HXMITX$course_id, 'MITx')
+
+## First attempt at creating a field 'institution' - mutate
+## DOES NOT WORK - INCOMPLETE
+#HXMITX$institution <- mutate(HXMITX, institution = 
+#  ifelse(str_detect(HXMITX$course_id,"HarvardX", "HarvardX"),
+#  ifelse(str_detect(HXMITX$course_id,"MITx","MITx")
+#    )
+
+
+## Second attempt - mutate
+## DOES NOT WORK - INCOMPLETE
+#HXMITX$institution <- 'HarvardX'
+#mutate (HXMITX, institution = ifelse(course_id str_detect(course_id)))
+
+#ifelse(str_detect(HXMITX$course_id, 'MITx'), 'MITx')
+
+## Create a 'HarvardX' field
+HXMITX$harvardx <- str_extract_all(HXMITX$course_id, 'HarvardX')
+View(HXMITX)
+
+## Create a 'MITx' field
+HXMITX$mitx <- str_extract_all(HXMITX$course_id, 'MITx')
+View(HXMITX)
+
+## Combine the sets into an 'institution' field
+## DOES NOT WORK - INCOMPLETE
+#HXMITX$institution <- 
+#  mutate(institution = 
+#      ifelse(HXMITX$harvardx == "HarvardX", "HarvardX",
+#      ifelse(HXMITX$mitx == "MITx", "MITx")
+#    )
+#  )
+
+
+## Third attempt - gsub
+HXMITX$institution <- gsub("(/).*","",HXMITX$course_id)
+
+
+## Drop test fields
+#HXMITX$institution <- NULL
+#HXMITX$HarvardX <- NULL
+#HXMITX$MITx <- NULL
+#HXMITX$harvardx <- NULL
+#HXMITX$mitx <- NULL
