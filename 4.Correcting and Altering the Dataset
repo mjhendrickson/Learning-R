@@ -1,4 +1,4 @@
-## Only the 3rd attempt - with gsub - is ccurenlty working.
+## Only the 3rd attempt - with gsub - is currently working.
 ## First two attempts included to show thought process.
 ## Ideally, I would like to find a way to get mutate and ifelse to work
 
