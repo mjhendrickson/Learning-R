@@ -44,8 +44,8 @@ View(HXMITX)
 #  )
 
 
-## Third attempt - gsub
-HXMITX$institution <- gsub("(/).*","",HXMITX$course_id)
+## Third attempt - sub & gsub
+HXMITX$institution <- sub("(/).*","",HXMITX$course_id) ## changed from gsub to sub since only replacing first instance
 
 
 ## Drop test fields
