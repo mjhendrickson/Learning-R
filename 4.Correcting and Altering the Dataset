@@ -44,12 +44,24 @@ View(HXMITX)
 #  )
 
 
-## Third attempt - sub & gsub
+## Third attempt - sub & gsub & str_match
+## Create field "Institution"
 HXMITX$institution <- sub("(/).*","",HXMITX$course_id) ## changed from gsub to sub since only replacing first instance
+
+## Create field "Course"
+HXMITX$course <- str_match(HXMITX$course_id,"/(.*?)/") ## Still includes / on both ends
+HXMITX$course <- substring(HXMITX$course,2) ## Removes 1st /
+HXMITX$course <- substring(HXMITX$course,1,nchar(HXMITX$course)-1) ## Removes 2nd /
+
+## Create field "Term"
+HXMITX$term <- str_match(HXMITX$course_id,"/(.*?)/") ## Still includes / on both ends
+
 
 
 ## Drop test fields
-#HXMITX$institution <- NULL
+HXMITX$institution <- NULL
+HXMITX$course <- NULL
+HXMITX$term <- NULL
 #HXMITX$HarvardX <- NULL
 #HXMITX$MITx <- NULL
 #HXMITX$harvardx <- NULL
