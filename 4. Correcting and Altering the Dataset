@@ -2,6 +2,8 @@
 ## For more on regex construction: https://regex101.com/
 
 ## WORKING ATTEMPT - str_extract()
+library(stringr) ## Load stringr
+
 ## Create field "institution"
 HXMITX$institution <- str_extract(HXMITX$course_id,"^\\w+(?=/)") ## Returns all before first /
 
