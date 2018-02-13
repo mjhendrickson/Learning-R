@@ -1,7 +1,36 @@
-## Only the 3rd attempt - with gsub - is currently working.
-## First two attempts included to show thought process.
-## Ideally, I would like to find a way to get mutate and ifelse to work
+## After discussing with a colleague, updated code to use stringr str_extract() and regex
+## For more on regex construction: https://regex101.com/
 
+## WORKING ATTEMPT - str_extract()
+## Create field "institution"
+HXMITX$institution <- str_extract(HXMITX$course_id,"^\\w+(?=/)") ## Returns all before first /
+
+## Create field "course"
+HXMITX$course <- str_extract(HXMITX$course_id,"(?<=/)\\w+(?=/)") ## Returns all between first and second /
+
+## Create field "year_term"
+HXMITX$year_term <- str_extract(HXMITX$course_id,"(?<=/)\\w+$") ## Returns all after second /
+
+## Create field "year"
+HXMITX$year <- str_extract(HXMITX$course_id,"(?<=/)\\d+") ## Returns all after second / and before _
+
+## Create field "term"
+HXMITX$term <- str_extract(HXMITX$course_id,"(?<=/\\d{4}_)\\w+$") ## Retuns all after _
+
+## Drop test and created fields
+#HXMITX$institution <- NULL
+#HXMITX$course <- NULL
+#HXMITX$year_term <- NULL
+#HXMITX$year <- NULL
+#HXMITX$term <- NULL
+#HXMITX$HarvardX <- NULL
+#HXMITX$MITx <- NULL
+#HXMITX$harvardx <- NULL
+#HXMITX$mitx <- NULL
+
+
+
+## EXPLORATION
 
 ## Gets every instance of HarvardX or MITx and prints it
 str_extract_all(HXMITX$course_id, 'HarvardX')
@@ -11,21 +40,6 @@ str_extract_all(HXMITX$course_id, 'MITx')
 str_detect(HXMITX$course_id, 'HarvardX')
 str_detect(HXMITX$course_id, 'MITx')
 
-## First attempt at creating a field 'institution' - mutate
-## DOES NOT WORK - INCOMPLETE
-#HXMITX$institution <- mutate(HXMITX, institution = 
-#  ifelse(str_detect(HXMITX$course_id,"HarvardX", "HarvardX"),
-#  ifelse(str_detect(HXMITX$course_id,"MITx","MITx")
-#    )
-
-
-## Second attempt - mutate
-## DOES NOT WORK - INCOMPLETE
-#HXMITX$institution <- 'HarvardX'
-#mutate (HXMITX, institution = ifelse(course_id str_detect(course_id)))
-
-#ifelse(str_detect(HXMITX$course_id, 'MITx'), 'MITx')
-
 ## Create a 'HarvardX' field
 HXMITX$harvardx <- str_extract_all(HXMITX$course_id, 'HarvardX')
 View(HXMITX)
@@ -33,36 +47,3 @@ View(HXMITX)
 ## Create a 'MITx' field
 HXMITX$mitx <- str_extract_all(HXMITX$course_id, 'MITx')
 View(HXMITX)
-
-## Combine the sets into an 'institution' field
-## DOES NOT WORK - INCOMPLETE
-#HXMITX$institution <- 
-#  mutate(institution = 
-#      ifelse(HXMITX$harvardx == "HarvardX", "HarvardX",
-#      ifelse(HXMITX$mitx == "MITx", "MITx")
-#    )
-#  )
-
-
-## Third attempt - sub & gsub & str_match
-## Create field "Institution"
-HXMITX$institution <- sub("(/).*","",HXMITX$course_id) ## changed from gsub to sub since only replacing first instance
-
-## Create field "Course"
-HXMITX$course <- str_match(HXMITX$course_id,"/(.*?)/") ## Still includes / on both ends
-HXMITX$course <- substring(HXMITX$course,2) ## Removes 1st /
-HXMITX$course <- substring(HXMITX$course,1,nchar(HXMITX$course)-1) ## Removes 2nd /
-
-## Create field "Term"
-# PICK UP HERE --- INVESTIGATE REGEX
-
-
-
-## Drop test fields
-HXMITX$institution <- NULL
-HXMITX$course <- NULL
-HXMITX$term <- NULL
-#HXMITX$HarvardX <- NULL
-#HXMITX$MITx <- NULL
-#HXMITX$harvardx <- NULL
-#HXMITX$mitx <- NULL
