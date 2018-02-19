@@ -6,11 +6,14 @@
 ## Exploratory Data Analysis
 ######################################################################
 
+## Install needed packages
+library(ggplot2)
+library(scales)
+library(DataExplorer)
+
 ########## Exploratory Data Analysis with DataExplorer
 
 ## Explore DataExplorer Package
-
-library(DataExplorer)
 
 plot_str(HxMx)
 plot_missing(HxMx)
