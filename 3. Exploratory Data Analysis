@@ -12,19 +12,19 @@
 
 library(DataExplorer)
 
-plot_str(HXMITX)
-plot_missing(HXMITX)
-plot_histogram(HXMITX)
-plot_density(HXMITX)
-plot_bar(HXMITX)
-create_report(HXMITX)
+plot_str(HxMx)
+plot_missing(HxMx)
+plot_histogram(HxMx)
+plot_density(HxMx)
+plot_bar(HxMx)
+create_report(HxMx)
 
 
 
 ########## Exploratory Data Analysis - Part 1: Single Variable
 
 ## Course ID
-ggplot(data = HXMITX) +
+ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = course_id)) +
   scale_x_discrete(name = " ") +
   scale_y_continuous(name=" ", labels = comma) +
@@ -34,23 +34,24 @@ ggplot(data = HXMITX) +
 
 ## After splitting Course ID, run Institution, Course, Year-Term, Year, and Term
 ## Institution
-ggplot(data = HXMITX) +
+ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = institution)) +
   scale_x_discrete(name = " ") +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Institution")
 
-## Course
-ggplot(data = HXMITX) +
-  geom_bar(mapping = aes(x = course)) +
+## Course Code
+ggplot(data = HxMx) +
+  geom_bar(mapping = aes(x = course_code)) +
   scale_x_discrete(name = " ") +
   scale_y_continuous(name=" ", labels = comma) +
-  theme(axis.title.x = element_blank()) +
+  theme(axis.title.x = element_blank(),
+        axis.text.x = element_text(angle=90, vjust=0.5)) +
   labs(title = "Course")
 
 ## Year-Term
-ggplot(data = HXMITX) +
+ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = year_term)) +
   scale_x_discrete(name = " ") +
   scale_y_continuous(name=" ", labels = comma) +
@@ -58,7 +59,7 @@ ggplot(data = HXMITX) +
   labs(title = "Year & Term")
 
 ## Year
-ggplot(data = HXMITX) +
+ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = year)) +
   scale_x_discrete(name = " ") +
   scale_y_continuous(name=" ", labels = comma) +
@@ -66,7 +67,7 @@ ggplot(data = HXMITX) +
   labs(title = "Year")
 
 ## Term
-ggplot(data = HXMITX) +
+ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = term)) +
   scale_x_discrete(name = " ") +
   scale_y_continuous(name=" ", labels = comma) +
@@ -75,41 +76,41 @@ ggplot(data = HXMITX) +
 
 ## User ID
 ## Too many records to show cleanly
-#ggplot(data = HXMITX) +
+#ggplot(data = HxMx) +
 #  geom_bar(mapping = aes(x = userid_DI)) +
 #  theme(axis.title.x = element_blank()) +
 #  labs(title = "User Id")
 
 ## Registered
-ggplot(data = HXMITX) +
+ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = registered)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Registered")
 
 ## Viewed
-ggplot(data = HXMITX) +
+ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = viewed)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Viewed") 
 
 ## Explored
-ggplot(data = HXMITX) +
+ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = explored)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Explored") 
 
 ## Certified
-ggplot(data = HXMITX) +
+ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = certified)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Certified") 
 
 ## Country code
-ggplot(data = HXMITX) +
+ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = final_cc_cname_DI)) +
   scale_x_discrete(name = " ") +
   scale_y_continuous(name=" ", labels = comma) +
@@ -118,7 +119,7 @@ ggplot(data = HXMITX) +
   labs(title = "Country Code")
 
 ## Level of education
-ggplot(data = HXMITX) +
+ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = LoE_DI)) +
   scale_x_discrete(name = " ") +
   scale_y_continuous(name=" ", labels = comma) +
@@ -127,7 +128,7 @@ ggplot(data = HXMITX) +
   labs(title = "Level of Education")
 
 ## Year of birth
-ggplot(data = HXMITX) +
+ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = YoB)) +
   scale_x_discrete(name = " ") +
   scale_y_continuous(name=" ", labels = comma) +
@@ -136,21 +137,21 @@ ggplot(data = HXMITX) +
   labs(title = "Year of Birth")
 
 ## Gender
-ggplot(data = HXMITX) +
+ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = gender)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Gender") 
 
 ## Grade
-ggplot(data = HXMITX) +
+ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = grade)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Grade") 
 
 ## Start time
-ggplot(data = HXMITX) +
+ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = start_time_DI)) +
   scale_x_date (name = " ") +
   scale_y_continuous(name=" ", labels = comma) +
@@ -159,7 +160,7 @@ ggplot(data = HXMITX) +
   labs(title = "Start Time")
 
 ## Last Event
-ggplot(data = HXMITX) +
+ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = last_event_DI)) +
   scale_x_date (name = " ") +
   scale_y_continuous(name=" ", labels = comma) +
@@ -168,35 +169,35 @@ ggplot(data = HXMITX) +
   labs(title = "Last Event")  
 
 ## Number of Events
-ggplot(data = HXMITX) +
+ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = nevents)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Number of Events") 
 
 ## Number of Days
-ggplot(data = HXMITX) +
+ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = ndays_act)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Number of Days") 
 
 ## Number of video plays
-ggplot(data = HXMITX) +
+ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = nplay_video)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Number of Video Plays") 
 
 ## Number of chapters
-ggplot(data = HXMITX) +
+ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = nchapters)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Number of Chapters") 
 
 ## Number of forum posts
-ggplot(data = HXMITX) +
+ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = nforum_posts)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
@@ -204,15 +205,16 @@ ggplot(data = HXMITX) +
 
 ## Roles
 ## All values are NULL - remove
-#ggplot(data = HXMITX) +
+#ggplot(data = HxMx) +
 #  geom_bar(mapping = aes(x = roles)) +
 #  scale_y_continuous(name=" ", labels = comma) +
 #  theme(axis.title.x = element_blank()) +
 #  labs(title = "Roles") 
 
 ## Inconsistent Flag
-ggplot(data = HXMITX) +
+ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = incomplete_flag)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Incomplete Flag") 
+
