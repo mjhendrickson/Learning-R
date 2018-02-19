@@ -1,8 +1,11 @@
 ## After discussing with a colleague, updated code to use stringr str_extract() and regex
 ## For more on regex construction: https://regex101.com/
 
-## WORKING ATTEMPT - str_extract()
-library(stringr) ## Load stringr
+## Load needed packages
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(stringr)
 
 ## Create field "institution"
 HXMITX$institution <- str_extract(HXMITX$course_id,"^\\w+(?=/)") ## Returns all before first /
