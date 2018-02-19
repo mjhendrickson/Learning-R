@@ -8,7 +8,7 @@ library(stringr) ## Load stringr
 HXMITX$institution <- str_extract(HXMITX$course_id,"^\\w+(?=/)") ## Returns all before first /
 
 ## Create field "course"
-HXMITX$course <- str_extract(HXMITX$course_id,"(?<=/)\\w+(?=/)") ## Returns all between first and second /
+HXMITX$course <- str_extract(HXMITX$course_id,"(?<=/).+(?=/)") ## Returns all between first and second /
 
 ## Create field "year_term"
 HXMITX$year_term <- str_extract(HXMITX$course_id,"(?<=/)\\w+$") ## Returns all after second /
