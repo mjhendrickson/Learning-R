@@ -1,14 +1,24 @@
-## Import the data into RStudio via readr package
+########## Importing & Reviewing the Data
+## Import main data into RStudio
 library(readr)
-HXMITX <- read_csv("C:/[filepath]/Hx-MITx Person Course AY2013/HMXPC13_DI_v2_5-14-14.csv")
-View(HXMITX)
+HXMITX <- read_csv("C:/[location]/HMXPC13_DI_v2_5-14-14.csv")
 
-## Ensure the data were read correctly into RStudio
-## Review the first few rows of the dataset
-head(HXMITX)
+## View main data
+View(HXMITX) # all rows
+head(HXMITX) # first few rows
+tail(HXMITX) # last few rows
 
-## Review the last few rows of the dataset
-tail(HXMITX)
-
-## Get summary information about the dataset
+## Get basic summary information about the main dataset
 summary(HXMITX)
+
+
+
+## Import reference data into RStudio
+library(readr)
+courses <- read_csv("C:/[location]/hxmitx_course_reference.csv")
+
+## View reference data
+View(courses) # all rows
+
+## Get basic summary information about the reference dataset
+summary(courses)
