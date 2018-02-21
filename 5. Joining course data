@@ -5,4 +5,4 @@
   
 library(dplyr)
 HxMx <- left_join(HXMITX, courses, by = "course_code", copy = FALSE)
-View(HMITX)
+View(HxMx)
