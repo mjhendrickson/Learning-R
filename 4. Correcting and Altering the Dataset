@@ -44,6 +44,20 @@ HXMITX$letter_grade <-  cut(HXMITX$grade,
                         include.highest = TRUE,
                         include.lowest = TRUE)
 
+## Create Indicator: nevents_ind
+HXMITX$nevents_ind <-     ifelse(HXMITX$nevents >= 1, 1,0)
+
+## Create Indicator: ndays_act_ind
+HXMITX$ndays_act_ind <-   ifelse(HXMITX$ndays_act >= 1, 1,0)
+
+## Create Indicator: nplay_video_ind
+HXMITX$nplay_video_ind <- ifelse(HXMITX$nplay_video >= 1, 1,0)
+
+## Create Indicator: nchapters_ind
+HXMITX$nchapters_ind <-   ifelse(HXMITX$nchapters >= 1, 1,0)
+
+## CONSIDER BINS FOR nevents, ndays_act, nplay_video, nchapters
+
 #-------------------------------------------------
 ## Drop test and created fields
 #HXMITX$institution <- NULL
@@ -56,3 +70,7 @@ HXMITX$letter_grade <-  cut(HXMITX$grade,
 #HXMITX$harvardx <- NULL
 #HXMITX$mitx <- NULL
 #HXMITX$letter_grade <- NULL
+#HXMITX$nevents_ind <- NULL
+#HXMITX$ndays_act_ind <- NULL
+#HXMITX$nplay_video_ind <- NULL
+#HXMITX$nchapters_ind <- NULL
