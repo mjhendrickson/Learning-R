@@ -37,14 +37,12 @@ HXMITX$year <- str_extract(HXMITX$course_id,"(?<=/)\\d{4}") ## Returns all after
 HXMITX$term <- str_extract(HXMITX$course_id,"(?<=/\\d{4}_)\\w+$") ## Retuns all after _
 
 ## Create Letter Grade
-## DOES NOT WORK
-HXMITX$letter_grade <- switch (HXMITX$grade,
-                               A = list(grade.min = 90.00, grade.max = 100),
-                               B = list(grade.min = 80.00, grade.max = 89.99),
-                               C = list(grade.min = 70.00, grade.max = 79.99),
-                               D = list(grade.min = 60.00, grade.max = 69.99),
-                               F = list(grade.min = 0, grade.max = 59.99)
-)
+HXMITX$letter_grade <-  cut(HXMITX$grade,
+                        breaks = c(0, .6, .7, .8, .9, 1.01), # The grade range goes to 1.01
+                        labels = c("F", "D", "C", "B", "A"),
+                        right = FALSE, 
+                        include.highest = TRUE,
+                        include.lowest = TRUE)
 
 #-------------------------------------------------
 ## Drop test and created fields
