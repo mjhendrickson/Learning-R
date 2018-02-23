@@ -282,3 +282,13 @@ ggplot(data = HxMx) +
   theme(axis.title.x = element_blank(),
         axis.text.x = element_text(angle=90, vjust=0.5)) +
   labs(title = "Course Full Title") 
+
+
+
+########## Exploratory Data Analysis - Part 2: Multi-Variable
+
+## First attempt at Institution x Grade (colored by letter_grade)
+## Still a work in progress
+ggplot(data = HxMx) +
+  geom_point(mapping = aes(x = institution, y=grade, color=letter_grade)) +
+  labs(title = "Grades by Institution")
