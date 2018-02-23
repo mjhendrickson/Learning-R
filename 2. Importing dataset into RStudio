@@ -22,3 +22,6 @@ View(courses) # all rows
 
 ## Get basic summary information about the reference dataset
 summary(courses)
+
+## Drop institution to avoid duplication after join
+courses$institution <- NULL
