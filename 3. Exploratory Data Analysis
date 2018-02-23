@@ -294,10 +294,17 @@ ggplot(data = HxMx) +
   labs(title = "Grades by Institution")
 
 ## First attempt at Grade x Institution
-## Still a work in progress
-ggplot(data = HxMx) +
+## Still a work in progressggplot(data = HxMx) +
   geom_bar(mapping = aes(x = grade)) +
   facet_grid(. ~HxMx$institution) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Grade") 
+
+ggplot(data = HxMx) +
+  geom_bar(mapping = aes(x = grade)) +
+  facet_grid(institution ~ short_title) +
+  scale_y_continuous(name=" ", labels = comma) +
+  theme(axis.title.x = element_blank(),
+        axis.text.x = element_text(angle=90, vjust=0.5)) +
+  labs(title = "Grade")
