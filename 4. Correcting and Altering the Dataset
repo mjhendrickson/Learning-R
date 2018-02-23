@@ -56,6 +56,9 @@ HXMITX$nplay_video_ind <- ifelse(HXMITX$nplay_video >= 1, 1,0)
 ## Create Indicator: nchapters_ind
 HXMITX$nchapters_ind <-   ifelse(HXMITX$nchapters >= 1, 1,0)
 
+## Create Indicator: nforum_posts_ind
+HXMITX$nforum_posts_ind <-   ifelse(HXMITX$nforum_posts >= 1, 1,0)
+
 ## CONSIDER BINS FOR nevents, ndays_act, nplay_video, nchapters
 
 #-------------------------------------------------
@@ -74,3 +77,4 @@ HXMITX$nchapters_ind <-   ifelse(HXMITX$nchapters >= 1, 1,0)
 #HXMITX$ndays_act_ind <- NULL
 #HXMITX$nplay_video_ind <- NULL
 #HXMITX$nchapters_ind <- NULL
+#HXMITX$nforum_posts_ind <- NULL
