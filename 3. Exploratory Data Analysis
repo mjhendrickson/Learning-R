@@ -1,12 +1,10 @@
-## First raw attempt at bar charts.
-## Need to better handle fields with a large number of values.
-## Need to address N/A values.
-
 ######################################################################
 ## Exploratory Data Analysis
 ######################################################################
 
-## Install needed packages
+## Need to address N/A values.
+
+## Load needed packages
 library(ggplot2)
 library(scales)
 library(DataExplorer)
@@ -42,14 +40,7 @@ ggplot(data = HxMx) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Institution") 
 
-#ggplot(data = HxMx) +
-#  geom_bar(mapping = aes(x = institution.y)) +
-#  scale_y_continuous(name=" ", labels = comma) +
-#  theme(axis.title.x = element_blank()) +
-#  labs(title = "Institution from Course") 
-## THIS IS REPETITIVE
-
-## Course Code
+## Course code
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = course_code)) +
   scale_y_continuous(name=" ", labels = comma) +
@@ -164,6 +155,14 @@ ggplot(data = HxMx) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Grade") 
 
+## Letter grade
+ggplot(data = HxMx) +
+  geom_bar(mapping = aes(x = letter_grade)) +
+  scale_x_discrete(limits = c("A","B","C","D","F",NA)) +
+  scale_y_continuous(name=" ", labels = comma) +
+  theme(axis.title.x = element_blank()) +
+  labs(title = "Letter Grade") 
+
 ## Start time
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = start_time_DI)) +
@@ -173,7 +172,7 @@ ggplot(data = HxMx) +
         axis.text.x = element_text(angle=90, vjust=0.5)) +
   labs(title = "Start Time")
 
-## Last Event
+## Last event
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = last_event_DI)) +
   scale_x_date (name = " ") +
@@ -182,19 +181,33 @@ ggplot(data = HxMx) +
         axis.text.x = element_text(angle=90, vjust=0.5)) +
   labs(title = "Last Event")  
 
-## Number of Events
+## Number of events
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = nevents)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Number of Events") 
 
-## Number of Days
+## Events indicator
+ggplot(data = HxMx) +
+  geom_bar(mapping = aes(x = nevents_ind)) +
+  scale_y_continuous(name=" ", labels = comma) +
+  theme(axis.title.x = element_blank()) +
+  labs(title = "Participated in an Event") 
+
+## Number of days active
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = ndays_act)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Number of Days") 
+
+## Days active indicator
+ggplot(data = HxMx) +
+  geom_bar(mapping = aes(x = ndays_act_ind)) +
+  scale_y_continuous(name=" ", labels = comma) +
+  theme(axis.title.x = element_blank()) +
+  labs(title = "Was Active") 
 
 ## Number of video plays
 ggplot(data = HxMx) +
@@ -203,6 +216,13 @@ ggplot(data = HxMx) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Number of Video Plays") 
 
+## Video plays indicator
+ggplot(data = HxMx) +
+  geom_bar(mapping = aes(x = nplay_video_ind)) +
+  scale_y_continuous(name=" ", labels = comma) +
+  theme(axis.title.x = element_blank()) +
+  labs(title = "Played Video") 
+
 ## Number of chapters
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = nchapters)) +
@@ -210,12 +230,26 @@ ggplot(data = HxMx) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Number of Chapters") 
 
+## Chapters indicator
+ggplot(data = HxMx) +
+  geom_bar(mapping = aes(x = nchapters_ind)) +
+  scale_y_continuous(name=" ", labels = comma) +
+  theme(axis.title.x = element_blank()) +
+  labs(title = "Read a Chapter") 
+
 ## Number of forum posts
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = nforum_posts)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Number of Forum Posts") 
+
+## Forum posts indicator
+ggplot(data = HxMx) +
+  geom_bar(mapping = aes(x = nchapters_ind)) +
+  scale_y_continuous(name=" ", labels = comma) +
+  theme(axis.title.x = element_blank()) +
+  labs(title = "Read a Chapter") 
 
 ## Roles
 ## All values are NULL - remove
@@ -232,43 +266,7 @@ ggplot(data = HxMx) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Incomplete Flag") 
 
-## Letter Grade
-## CHANGE LETTER ORDER
-ggplot(data = HxMx) +
-  geom_bar(mapping = aes(x = letter_grade)) +
-  scale_y_continuous(name=" ", labels = comma) +
-  theme(axis.title.x = element_blank()) +
-  labs(title = "Letter Grade") 
-
-## Number of Events Indicator
-ggplot(data = HxMx) +
-  geom_bar(mapping = aes(x = nevents_ind)) +
-  scale_y_continuous(name=" ", labels = comma) +
-  theme(axis.title.x = element_blank()) +
-  labs(title = "Participated in an Event") 
-
-## Number of Days Active Indicator
-ggplot(data = HxMx) +
-  geom_bar(mapping = aes(x = ndays_act_ind)) +
-  scale_y_continuous(name=" ", labels = comma) +
-  theme(axis.title.x = element_blank()) +
-  labs(title = "Was Active") 
-
-## Number of Video Plays Indicator
-ggplot(data = HxMx) +
-  geom_bar(mapping = aes(x = nplay_video_ind)) +
-  scale_y_continuous(name=" ", labels = comma) +
-  theme(axis.title.x = element_blank()) +
-  labs(title = "Played Video") 
-
-## Number of Chapters Indicator
-ggplot(data = HxMx) +
-  geom_bar(mapping = aes(x = nchapters_ind)) +
-  scale_y_continuous(name=" ", labels = comma) +
-  theme(axis.title.x = element_blank()) +
-  labs(title = "Read a Chapter") 
-
-## Short Title
+## Short title
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = short_title)) +
   scale_y_continuous(name=" ", labels = comma) +
@@ -276,10 +274,10 @@ ggplot(data = HxMx) +
         axis.text.x = element_text(angle=90, vjust=0.5)) +
   labs(title = "Course Short Title") 
 
-## Full Title
-## FIX AXIS WRAP
+## Full title
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = full_title)) +
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 40)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank(),
         axis.text.x = element_text(angle=90, vjust=0.5)) +
