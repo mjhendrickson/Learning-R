@@ -291,10 +291,12 @@ ggplot(data = HxMx) +
 ## Still a work in progress
 ggplot(data = HxMx) +
   geom_point(mapping = aes(x = institution, y=grade, color=letter_grade)) +
+  scale_y_continuous(name=" ", labels = comma) +
   labs(title = "Grades by Institution")
 
 ## First attempt at Grade x Institution
-## Still a work in progressggplot(data = HxMx) +
+## Still a work in progress
+ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = grade)) +
   facet_grid(. ~HxMx$institution) +
   scale_y_continuous(name=" ", labels = comma) +
