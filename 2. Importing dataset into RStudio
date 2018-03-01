@@ -1,4 +1,4 @@
-`
+```{r}
 ########## Importing & Reviewing the Data
 ## Import main data into RStudio
 library(readr)
@@ -26,4 +26,4 @@ summary(courses)
 
 ## Drop institution to avoid duplication after join
 courses$institution <- NULL
-`
+```
