@@ -35,7 +35,7 @@ ggplot(data = HxMx) +
 
 ## Institution
 ggplot(data = HxMx) +
-  geom_bar(mapping = aes(x = institution.x)) +
+  geom_bar(mapping = aes(x = institution)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Institution") 
