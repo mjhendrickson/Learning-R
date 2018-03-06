@@ -2,7 +2,14 @@
 ## Exploratory Data Analysis
 ######################################################################
 
-## Need to address N/A values.
+## Need to address N/A values
+## Can modify ggplot(data = HxMx) to ggplot(data = subset(HxMx, !is.na([field])))
+## Updated term, LoE_DI, YoB, gender, letter_grade
+
+## Need to address Semester field
+## Examples: Fall 2012, Spring 2013, Fall 2012 and Spring 2013
+## Change to just Fall 2012, spring 2013, Summer 2013
+## How to address courses that cross over terms?
 
 ## Load needed packages
 library(ggplot2)
@@ -64,7 +71,7 @@ ggplot(data = HxMx) +
   labs(title = "Year") 
 
 ## Term
-ggplot(data = HxMx) +
+ggplot(data = subset(HxMx, !is.na(term))) +
   geom_bar(mapping = aes(x = term)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
@@ -124,7 +131,7 @@ ggplot(data = HxMx) +
   labs(title = "Country Code")
 
 ## Level of education
-ggplot(data = HxMx) +
+ggplot(data = subset(HxMx, !is.na(LoE_DI))) +
   geom_bar(mapping = aes(x = LoE_DI)) +
   scale_x_discrete(name = " ") +
   scale_y_continuous(name=" ", labels = comma) +
@@ -133,16 +140,16 @@ ggplot(data = HxMx) +
   labs(title = "Level of Education")
 
 ## Year of birth
-ggplot(data = HxMx) +
+ggplot(data = subset(HxMx, !is.na(YoB))) +
   geom_bar(mapping = aes(x = YoB)) +
   scale_x_discrete(name = " ") +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank(),
         axis.text.x = element_text(angle=90, vjust=0.5)) +
   labs(title = "Year of Birth")
-
+  
 ## Gender
-ggplot(data = HxMx) +
+ggplot(data = subset(HxMx, !is.na(gender))) +
   geom_bar(mapping = aes(x = gender)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
@@ -156,9 +163,9 @@ ggplot(data = HxMx) +
   labs(title = "Grade") 
 
 ## Letter grade
-ggplot(data = HxMx) +
+ggplot(data = subset(HxMx, !is.na(letter_grade))) +
   geom_bar(mapping = aes(x = letter_grade)) +
-  scale_x_discrete(limits = c("A","B","C","D","F",NA)) +
+  scale_x_discrete(limits = c("A","B","C","D","F")) + #,NA)) + inclue for NA
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Letter Grade") 
@@ -310,3 +317,4 @@ ggplot(data = HxMx) +
   theme(axis.title.x = element_blank(),
         axis.text.x = element_text(angle=90, vjust=0.5)) +
   labs(title = "Grade")
+  
