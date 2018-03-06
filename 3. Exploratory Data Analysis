@@ -2,7 +2,7 @@
 ## Exploratory Data Analysis
 ######################################################################
 
-## Need to address N/A values
+## Addressed N/A values
 ## Can modify ggplot(data = HxMx) to ggplot(data = subset(HxMx, !is.na([field])))
 ## Updated term, LoE_DI, YoB, gender, letter_grade
 
@@ -10,6 +10,10 @@
 ## Examples: Fall 2012, Spring 2013, Fall 2012 and Spring 2013
 ## Change to just Fall 2012, spring 2013, Summer 2013
 ## How to address courses that cross over terms?
+
+## Need to address Warning message: Removed N rows containing non-finite values (stat_count)
+## Applies to grade, last_event_DI, nevents, nevents_ind, ndays_act, ndays_act_ind, nplay_video,
+## npaly_video_ind, nchapters, nchapters_ind, incomplete_flag
 
 ## Load needed packages
 library(ggplot2)
@@ -156,6 +160,7 @@ ggplot(data = subset(HxMx, !is.na(gender))) +
   labs(title = "Gender") 
 
 ## Grade
+## Removed 57400 rows containing non-finite values (stat_count)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = grade)) +
   scale_y_continuous(name=" ", labels = comma) +
@@ -180,6 +185,7 @@ ggplot(data = HxMx) +
   labs(title = "Start Time")
 
 ## Last event
+## Removed 178954 rows containing non-finite values (stat_count)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = last_event_DI)) +
   scale_x_date (name = " ") +
@@ -189,6 +195,7 @@ ggplot(data = HxMx) +
   labs(title = "Last Event")  
 
 ## Number of events
+## Removed 199151 rows containing non-finite values (stat_count)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = nevents)) +
   scale_y_continuous(name=" ", labels = comma) +
@@ -196,6 +203,7 @@ ggplot(data = HxMx) +
   labs(title = "Number of Events") 
 
 ## Events indicator
+## Removed 199151 rows containing non-finite values (stat_count)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = nevents_ind)) +
   scale_y_continuous(name=" ", labels = comma) +
@@ -203,6 +211,7 @@ ggplot(data = HxMx) +
   labs(title = "Participated in an Event") 
 
 ## Number of days active
+## Removed 162743 rows containing non-finite values (stat_count)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = ndays_act)) +
   scale_y_continuous(name=" ", labels = comma) +
@@ -210,6 +219,7 @@ ggplot(data = HxMx) +
   labs(title = "Number of Days") 
 
 ## Days active indicator
+## Removed 162743 rows containing non-finite values (stat_count)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = ndays_act_ind)) +
   scale_y_continuous(name=" ", labels = comma) +
@@ -217,6 +227,7 @@ ggplot(data = HxMx) +
   labs(title = "Was Active") 
 
 ## Number of video plays
+## Removed 457530 rows containing non-finite values (stat_count)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = nplay_video)) +
   scale_y_continuous(name=" ", labels = comma) +
@@ -224,6 +235,7 @@ ggplot(data = HxMx) +
   labs(title = "Number of Video Plays") 
 
 ## Video plays indicator
+## Removed 457530 rows containing non-finite values (stat_count)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = nplay_video_ind)) +
   scale_y_continuous(name=" ", labels = comma) +
@@ -231,6 +243,7 @@ ggplot(data = HxMx) +
   labs(title = "Played Video") 
 
 ## Number of chapters
+## Removed 258753 rows containing non-finite values (stat_count)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = nchapters)) +
   scale_y_continuous(name=" ", labels = comma) +
@@ -238,6 +251,7 @@ ggplot(data = HxMx) +
   labs(title = "Number of Chapters") 
 
 ## Chapters indicator
+## Removed 258753 rows containing non-finite values (stat_count)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = nchapters_ind)) +
   scale_y_continuous(name=" ", labels = comma) +
@@ -253,10 +267,10 @@ ggplot(data = HxMx) +
 
 ## Forum posts indicator
 ggplot(data = HxMx) +
-  geom_bar(mapping = aes(x = nchapters_ind)) +
+  geom_bar(mapping = aes(x = nforum_posts_ind)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
-  labs(title = "Read a Chapter") 
+  labs(title = "Posted in Forum") 
 
 ## Roles
 ## All values are NULL - remove
@@ -267,6 +281,7 @@ ggplot(data = HxMx) +
 #  labs(title = "Roles") 
 
 ## Inconsistent Flag
+## Removed 540977 rows containing non-finite values (stat_count)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = incomplete_flag)) +
   scale_y_continuous(name=" ", labels = comma) +
