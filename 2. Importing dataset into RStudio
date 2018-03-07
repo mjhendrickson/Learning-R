@@ -1,7 +1,7 @@
 ########## Importing & Reviewing the Data
 ## Import main data into RStudio
 library(readr)
-HXMITX <- read_csv("C:/[location]/HMXPC13_DI_v2_5-14-14.csv")
+HXMITX <- read_csv("HMXPC13_DI_v2_5-14-14.csv")
 
 ## View main data
 View(HXMITX) # all rows
