@@ -9,10 +9,10 @@ install.packages("tidyverse")
 install.packages("DataExplorer")
 
 # ===== Load needed packages =====
-library(readr)
 library(tidyverse)
-library(ggplot2)
-library(scales)
+library(readr)
 library(dplyr)
 library(stringr)
+library(ggplot2)
+library(scales)
 library(DataExplorer)
