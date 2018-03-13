@@ -14,10 +14,8 @@ library(DataExplorer)
 
 
 # ----- Next Steps -----
-# Need to address N/A values
-# Can modify ggplot(data = HxMx) to ggplot(data = subset(HxMx, !is.na([field])))
-
-# User ID - too many records to show cleanly
+# 1. User ID - too many records to show cleanly
+# 2. Edit scales / limits for plots
 
 
 
@@ -72,7 +70,9 @@ ggplot(data = HxMx) +
   labs(title = "Year") 
 
 # Term
-ggplot(data = subset(HxMx, !is.na(term))) +
+HxMx %>%
+  subset(!is.na(term)) %>%
+ggplot() +
   geom_bar(mapping = aes(x = term)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
@@ -131,7 +131,9 @@ ggplot(data = HxMx) +
   labs(title = "Country Code")
 
 # Level of education
-ggplot(data = subset(HxMx, !is.na(LoE_DI))) +
+HxMx %>%
+  subset(!is.na(LoE_DI)) %>%
+ggplot() +
   geom_bar(mapping = aes(x = LoE_DI)) +
   scale_x_discrete(name = " ") +
   scale_y_continuous(name=" ", labels = comma) +
@@ -140,7 +142,9 @@ ggplot(data = subset(HxMx, !is.na(LoE_DI))) +
   labs(title = "Level of Education")
 
 # Year of birth
-ggplot(data = subset(HxMx, !is.na(YoB))) +
+HxMx %>%
+  subset(!is.na(YoB)) %>%
+ggplot() +
   geom_bar(mapping = aes(x = YoB)) +
   scale_x_discrete(name = " ") +
   scale_y_continuous(name=" ", labels = comma) +
@@ -149,24 +153,29 @@ ggplot(data = subset(HxMx, !is.na(YoB))) +
   labs(title = "Year of Birth")
 
 # Gender
-ggplot(data = subset(HxMx, !is.na(gender))) +
+HxMx %>%
+  subset(!is.na(gender)) %>%
+ggplot() +
   geom_bar(mapping = aes(x = gender)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Gender") 
 
 # Grade
-# Removed 57400 rows containing non-finite values (stat_count)
-ggplot(data = HxMx) +
+HxMx %>%
+  subset(!is.na(grade)) %>%
+ggplot() +
   geom_bar(mapping = aes(x = grade)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Grade") 
 
 # Letter grade
-ggplot(data = subset(HxMx, !is.na(letter_grade))) +
+HxMx %>%
+  subset(!is.na(letter_grade)) %>%
+ggplot() +
   geom_bar(mapping = aes(x = letter_grade)) +
-  scale_x_discrete(limits = c("A","B","C","D","F")) + #,NA)) + inclue for NA
+  scale_x_discrete(limits = c("A","B","C","D","F")) + #,NA)) + inclue for NA, also remove subset
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Letter Grade") 
@@ -181,8 +190,9 @@ ggplot(data = HxMx) +
   labs(title = "Start Time")
 
 # Last event
-# Removed 178954 rows containing non-finite values (stat_count)
-ggplot(data = HxMx) +
+HxMx %>%
+  subset(!is.na(last_event_DI)) %>%
+ggplot() +
   geom_bar(mapping = aes(x = last_event_DI)) +
   scale_x_date (name = " ") +
   scale_y_continuous(name=" ", labels = comma) +
@@ -191,64 +201,72 @@ ggplot(data = HxMx) +
   labs(title = "Last Event")  
 
 # Number of events
-# Removed 199151 rows containing non-finite values (stat_count)
-ggplot(data = HxMx) +
+HxMx %>%
+  subset(!is.na(nevents)) %>%
+ggplot() +
   geom_bar(mapping = aes(x = nevents)) +
-  scale_y_continuous(name=" ", labels = comma) +
+  scale_y_continuous(name=" ", labels = comma) + #, limits=c(0,150)) + to change Y axis
   theme(axis.title.x = element_blank()) +
   labs(title = "Number of Events") 
 
 # Events indicator
-# Removed 199151 rows containing non-finite values (stat_count)
-ggplot(data = HxMx) +
+HxMx %>%
+  subset(!is.na(nevents_ind)) %>%
+ggplot() +
   geom_bar(mapping = aes(x = nevents_ind)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Participated in an Event") 
 
 # Number of days active
-# Removed 162743 rows containing non-finite values (stat_count)
-ggplot(data = HxMx) +
+HxMx %>%
+  subset(!is.na(ndays_act)) %>%
+ggplot() +
   geom_bar(mapping = aes(x = ndays_act)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Number of Days") 
 
 # Days active indicator
-# Removed 162743 rows containing non-finite values (stat_count)
-ggplot(data = HxMx) +
+HxMx %>%
+  subset(!is.na(ndays_act_ind)) %>%
+ggplot() +
   geom_bar(mapping = aes(x = ndays_act_ind)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Was Active") 
 
 # Number of video plays
-# Removed 457530 rows containing non-finite values (stat_count)
-ggplot(data = HxMx) +
+HxMx %>%
+  subset(!is.na(nplay_video)) %>%
+ggplot() +
   geom_bar(mapping = aes(x = nplay_video)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Number of Video Plays") 
 
 # Video plays indicator
-# Removed 457530 rows containing non-finite values (stat_count)
-ggplot(data = HxMx) +
+HxMx %>%
+  subset(!is.na(nplay_video_ind)) %>%
+ggplot() +
   geom_bar(mapping = aes(x = nplay_video_ind)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Played Video") 
 
 # Number of chapters
-# Removed 258753 rows containing non-finite values (stat_count)
-ggplot(data = HxMx) +
+HxMx %>%
+  subset(!is.na(nchapters)) %>%
+ggplot() +
   geom_bar(mapping = aes(x = nchapters)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Number of Chapters") 
 
 # Chapters indicator
-# Removed 258753 rows containing non-finite values (stat_count)
-ggplot(data = HxMx) +
+HxMx %>%
+  subset(!is.na(nchapters_ind)) %>%
+ggplot() +
   geom_bar(mapping = aes(x = nchapters_ind)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
@@ -277,8 +295,9 @@ ggplot(data = HxMx) +
 #  labs(title = "Roles") 
 
 # Inconsistent Flag
-# Removed 540977 rows containing non-finite values (stat_count)
-ggplot(data = HxMx) +
+HxMx %>%
+  subset(!is.na(incomplete_flag)) %>%
+ggplot() +
   geom_bar(mapping = aes(x = incomplete_flag)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
