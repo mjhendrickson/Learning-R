@@ -17,11 +17,6 @@ library(DataExplorer)
 # Need to address N/A values
 # Can modify ggplot(data = HxMx) to ggplot(data = subset(HxMx, !is.na([field])))
 
-# Need to address Semester field
-# Examples: Fall 2012, Spring 2013, Fall 2012 and Spring 2013
-# Change to just Fall 2012, spring 2013, Summer 2013
-# How to address courses that cross over terms?
-
 # User ID - too many records to show cleanly
 
 
@@ -84,7 +79,6 @@ ggplot(data = subset(HxMx, !is.na(term))) +
   labs(title = "Term") 
 
 # Semester
-### CLEAN UP - DUPLICATION IN VALUES
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = semester)) +
   scale_y_continuous(name=" ", labels = comma) +
