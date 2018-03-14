@@ -191,16 +191,49 @@ ggplot(data = HxMx) +
 
 # Last event
 HxMx %>%
-  subset(!is.na(last_event_DI)) %>%
+  summarize(
+    mean = mean(last_event_DI, na.rm=TRUE),
+    med = median(last_event_DI, na.rm=TRUE),
+    sd = sd(last_event_DI, na.rm=TRUE),
+    iqr = IQR(last_event_DI, na.rm=TRUE),
+    mad = mad(last_event_DI, na.rm=TRUE),
+    min = min(last_event_DI, na.rm=TRUE),
+    max = max(last_event_DI, na.rm=TRUE),
+    n = n()
+  )
+
+#HxMx %>%
+#  subset(!is.na(last_event_DI)) %>%
+#ggplot() +
+#  geom_bar(mapping = aes(x = last_event_DI)) +
+#  scale_x_date (name = " ") +
+#  scale_y_continuous(name=" ", labels = comma) +
+#  theme(axis.title.x = element_blank(),
+#        axis.text.x = element_text(angle=90, vjust=0.5)) +
+#  labs(title = "Last Event")  
+
+HxMx %>%
+  subset(!is.na(last_event_ym)) %>%
 ggplot() +
-  geom_bar(mapping = aes(x = last_event_DI)) +
-  scale_x_date (name = " ") +
+  geom_bar(mapping = aes(x = last_event_ym)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank(),
         axis.text.x = element_text(angle=90, vjust=0.5)) +
-  labs(title = "Last Event")  
+  labs(title = "Last Event")
 
 # Number of events
+HxMx %>%
+  summarize(
+    mean = mean(nevents, na.rm=TRUE),
+    med = median(nevents, na.rm=TRUE),
+    sd = sd(nevents, na.rm=TRUE),
+    iqr = IQR(nevents, na.rm=TRUE),
+    mad = mad(nevents, na.rm=TRUE),
+    min = min(nevents, na.rm=TRUE),
+    max = max(nevents, na.rm=TRUE),
+    n = n()
+  )
+
 HxMx %>%
   subset(!is.na(nevents)) %>%
 ggplot() +
