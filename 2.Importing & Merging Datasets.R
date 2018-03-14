@@ -58,6 +58,9 @@ HXMITX$year_term <- str_extract(HXMITX$course_id,"(?<=/)\\w+$") ## Returns all a
 # Create field "year"
 HXMITX$year <- str_extract(HXMITX$course_id,"(?<=/)\\d{4}") ## Returns all after second / and before _
 
+# Create field "last_event_ym"
+HXMITX$last_event_ym <- str_extract(HXMITX$last_event_DI,"^\\w+(?=-).+(?=-)") ## Returns all before second -
+
 # Create field "term"
 HXMITX$term <- str_extract(HXMITX$course_id,"(?<=/\\d{4}_)\\w+$") ## Retuns all after _
 
