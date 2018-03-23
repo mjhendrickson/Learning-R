@@ -135,7 +135,7 @@ HxMx %>%
   subset(!is.na(LoE_DI)) %>%
 ggplot() +
   geom_bar(mapping = aes(x = LoE_DI)) +
-  scale_x_discrete(name = " ") +
+  scale_x_discrete(name = " ", limits = c("Less than Secondary", "Secondary", "Bachelor's", "Master's", "Doctorate")) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank(),
         axis.text.x = element_text(angle=90, vjust=0.5)) +
