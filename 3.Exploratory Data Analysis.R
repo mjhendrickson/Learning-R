@@ -48,7 +48,7 @@ ggplot(data = HxMx) +
 
 # Course code
 ggplot(data = HxMx) +
-  geom_bar(mapping = aes(x = course_code)) +
+  geom_bar(mapping = aes(x = course_code, fill = institution)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank(),
         axis.text.x = element_text(angle=90, vjust=0.5)) +
