@@ -373,6 +373,8 @@ ggplot(data = HxMx) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Grade") 
 
+# First attempt at Grade x Institution x Course
+### Still a work in progress
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = grade)) +
   facet_grid(institution ~ short_title) +
