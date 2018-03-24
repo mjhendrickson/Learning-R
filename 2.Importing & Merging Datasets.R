@@ -7,6 +7,7 @@
 library(tidyverse)
 
 
+
 # ===== Importing & Reviewing the Data =====
 # ----- a. Import HXMITX course data into RStudio -----
 HXMITX <- read_csv("HMXPC13_DI_v2_5-14-14.csv")
@@ -44,21 +45,22 @@ str_detect(HXMITX$course_id, 'HarvardX')
 str_detect(HXMITX$course_id, 'MITx')
 
 
+
 # ----- b. Needed fields -----
 # Create field "institution"
-HXMITX$institution <- str_extract(HXMITX$course_id,"^\\w+(?=/)") ## Returns all before first /
+HXMITX$institution <-       str_extract(HXMITX$course_id,"^\\w+(?=/)") ## Returns all before first /
 
 # Create field "course_code"
-HXMITX$course_code <- str_extract(HXMITX$course_id,"(?<=/).+(?=/)") ## Returns all between first and second /
+HXMITX$course_code <-       str_extract(HXMITX$course_id,"(?<=/).+(?=/)") ## Returns all between first and second /
 
 # Create field "year_term"
-HXMITX$year_term <- str_extract(HXMITX$course_id,"(?<=/)\\w+$") ## Returns all after second /
+HXMITX$year_term <-         str_extract(HXMITX$course_id,"(?<=/)\\w+$") ## Returns all after second /
 
 # Create field "year"
-HXMITX$year <- str_extract(HXMITX$course_id,"(?<=/)\\d{4}") ## Returns all after second / and before _
+HXMITX$year <-              str_extract(HXMITX$course_id,"(?<=/)\\d{4}") ## Returns all after second / and before _
 
 # Create field "last_event_ym"
-HXMITX$last_event_ym <- str_extract(HXMITX$last_event_DI,"^\\w+(?=-).+(?=-)") ## Returns all before second -
+HXMITX$last_event_ym <-     str_extract(HXMITX$last_event_DI,"^\\w+(?=-).+(?=-)") ## Returns all before second -
 
 # Create field "term"
 HXMITX$term <- str_extract(HXMITX$course_id,"(?<=/\\d{4}_)\\w+$") ## Retuns all after _
@@ -72,19 +74,19 @@ HXMITX$letter_grade <-  cut(HXMITX$grade,
                             include.lowest = TRUE)
 
 # Create Indicator: nevents_ind
-HXMITX$nevents_ind <-     ifelse(HXMITX$nevents >= 1, 1,0)
+HXMITX$nevents_ind <-       ifelse(HXMITX$nevents >= 1, 1,0)
 
 # Create Indicator: ndays_act_ind
-HXMITX$ndays_act_ind <-   ifelse(HXMITX$ndays_act >= 1, 1,0)
+HXMITX$ndays_act_ind <-     ifelse(HXMITX$ndays_act >= 1, 1,0)
 
 # Create Indicator: nplay_video_ind
-HXMITX$nplay_video_ind <- ifelse(HXMITX$nplay_video >= 1, 1,0)
+HXMITX$nplay_video_ind <-   ifelse(HXMITX$nplay_video >= 1, 1,0)
 
 # Create Indicator: nchapters_ind
-HXMITX$nchapters_ind <-   ifelse(HXMITX$nchapters >= 1, 1,0)
+HXMITX$nchapters_ind <-     ifelse(HXMITX$nchapters >= 1, 1,0)
 
 # Create Indicator: nforum_posts_ind
-HXMITX$nforum_posts_ind <-   ifelse(HXMITX$nforum_posts >= 1, 1,0)
+HXMITX$nforum_posts_ind <-  ifelse(HXMITX$nforum_posts >= 1, 1,0)
 
 # CONSIDER BINS FOR nevents, ndays_act, nplay_video, nchapters
 
