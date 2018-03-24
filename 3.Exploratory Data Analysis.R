@@ -56,9 +56,6 @@ ggplot(data = HxMx) +
   labs(title = "Course Code") 
 
 
-# Year & Term -- repetitive and not as clean as Year and Term below
-
-
 # Year
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = year)) +
