@@ -235,7 +235,7 @@ ggplot(data = HxMx) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank(),
         axis.text.x = element_text(angle=90, vjust=0.5)) +
-  labs(title = "Start Time")
+  labs(title = "Start Month")
 
 
 # Last event
@@ -269,7 +269,7 @@ ggplot() +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank(),
         axis.text.x = element_text(angle=90, vjust=0.5)) +
-  labs(title = "Last Event")
+  labs(title = "Last Event Month")
 
 
 # Number of events
