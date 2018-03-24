@@ -18,6 +18,11 @@ head(HXMITX) # first few rows
 tail(HXMITX) # last few rows
 summary(HXMITX) # basic summary info
 
+# Drop roles as all records are NULL
+HXMITX$roles <- NULL
+
+
+
 # ----- b. Import reference data into RStudio -----
 courses <- read_csv("hxmitx_course_reference.csv")
 
@@ -59,11 +64,14 @@ HXMITX$year_term <-         str_extract(HXMITX$course_id,"(?<=/)\\w+$") ## Retur
 # Create field "year"
 HXMITX$year <-              str_extract(HXMITX$course_id,"(?<=/)\\d{4}") ## Returns all after second / and before _
 
+# Create field "start_time_ym"
+HXMITX$start_time_ym <-     str_extract(HXMITX$start_time_DI,"^\\w+(?=-).+(?=-)") ## Returns all before second -
+
 # Create field "last_event_ym"
 HXMITX$last_event_ym <-     str_extract(HXMITX$last_event_DI,"^\\w+(?=-).+(?=-)") ## Returns all before second -
 
 # Create field "term"
-HXMITX$term <- str_extract(HXMITX$course_id,"(?<=/\\d{4}_)\\w+$") ## Retuns all after _
+HXMITX$term <-              str_extract(HXMITX$course_id,"(?<=/\\d{4}_)\\w+$") ## Retuns all after _
 
 # Create Letter Grade
 HXMITX$letter_grade <-  cut(HXMITX$grade,
