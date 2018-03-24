@@ -180,6 +180,15 @@ ggplot() +
   theme(axis.title.x = element_blank()) +
   labs(title = "Grade") 
 
+  # As a histogram, binning results
+HxMx %>%
+  subset(!is.na(grade)) %>%
+ggplot() +
+  geom_histogram(mapping = aes(x = grade)) +
+  scale_y_continuous(name=" ", labels = comma) +
+  theme(axis.title.x = element_blank()) +
+  labs(title = "Grade") 
+
 
 # Letter grade
 HxMx %>%
@@ -191,7 +200,7 @@ ggplot() +
   theme(axis.title.x = element_blank()) +
   labs(title = "Letter Grade") 
 
-  # Grades for those not earning an "F"
+  # Letter grades for those not earning an "F"
 HxMx %>%
   subset(!is.na(letter_grade)) %>%
   ggplot() +
@@ -203,9 +212,29 @@ HxMx %>%
 
 
 # Start time
+HxMx %>%
+  summarize(
+    mean = mean(start_time_DI, na.rm=TRUE),
+    med = median(start_time_DI, na.rm=TRUE),
+    iqr = IQR(start_time_DI, na.rm=TRUE),
+    mad = mad(start_time_DI, na.rm=TRUE),
+    min = min(start_time_DI, na.rm=TRUE),
+    max = max(start_time_DI, na.rm=TRUE),
+    n = n()
+  )
+
+  # As bar graph
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = start_time_DI)) +
   scale_x_date (name = " ") +
+  scale_y_continuous(name=" ", labels = comma) +
+  theme(axis.title.x = element_blank(),
+        axis.text.x = element_text(angle=90, vjust=0.5)) +
+  labs(title = "Start Time")
+
+  # As a bar graph by month
+ggplot(data = HxMx) +
+  geom_bar(mapping = aes(x = start_time_ym)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank(),
         axis.text.x = element_text(angle=90, vjust=0.5)) +
@@ -218,13 +247,13 @@ HxMx %>%
     mean = mean(last_event_DI, na.rm=TRUE),
     med = median(last_event_DI, na.rm=TRUE),
     sd = sd(last_event_DI, na.rm=TRUE),
-    iqr = IQR(last_event_DI, na.rm=TRUE),
     mad = mad(last_event_DI, na.rm=TRUE),
     min = min(last_event_DI, na.rm=TRUE),
     max = max(last_event_DI, na.rm=TRUE),
     n = n()
   )
 
+  # As bar graph
 HxMx %>%
   subset(!is.na(last_event_DI)) %>%
 ggplot() +
@@ -235,6 +264,7 @@ ggplot() +
         axis.text.x = element_text(angle=90, vjust=0.5)) +
   labs(title = "Last Event")  
 
+  # As bar graph by month
 HxMx %>%
   subset(!is.na(last_event_ym)) %>%
 ggplot() +
@@ -351,9 +381,6 @@ ggplot(data = HxMx) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Posted in Forum") 
-
-
-# Roles -- do not include, all values are NULL
 
 
 # Inconsistent Flag
