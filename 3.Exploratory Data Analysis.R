@@ -32,6 +32,7 @@ create_report(HxMx)
 # Course ID
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = course_id, fill = institution)) +
+  scale_fill_manual(values = c("#C90016","#8A8B8C")) + # hex colors matching institution
   scale_x_discrete(name = " ") +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank(),
@@ -50,6 +51,7 @@ ggplot(data = HxMx) +
 # Course code
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = course_code, fill = institution)) +
+  scale_fill_manual(values = c("#C90016","#8A8B8C")) + # hex colors matching institution
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank(),
         axis.text.x = element_text(angle=90, vjust=0.5)) +
@@ -393,6 +395,7 @@ ggplot() +
 # Short title
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = short_title, fill = institution)) +
+  scale_fill_manual(values = c("#C90016","#8A8B8C")) + # hex colors matching institution
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank(),
         axis.text.x = element_text(angle=90, vjust=0.5)) +
@@ -402,6 +405,7 @@ ggplot(data = HxMx) +
 # Full title
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = full_title, fill = institution)) +
+  scale_fill_manual(values = c("#C90016","#8A8B8C")) + # hex colors matching institution
   scale_x_discrete(labels = function(x) str_wrap(x, width = 40)) +
   scale_y_continuous(name=" ", labels = comma) +
   theme(axis.title.x = element_blank(),
