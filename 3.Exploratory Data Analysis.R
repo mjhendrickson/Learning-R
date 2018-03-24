@@ -56,13 +56,7 @@ ggplot(data = HxMx) +
   labs(title = "Course Code") 
 
 
-# Year & Term
-#ggplot(data = HxMx) +
-#  geom_bar(mapping = aes(x = year_term)) +
-#  scale_y_continuous(name=" ", labels = comma) +
-#  theme(axis.title.x = element_blank()) +
-#  labs(title = "Year & Term") 
-## Repetitive and not as clean as Year and Term below
+# Year & Term -- repetitive and not as clean as Year and Term below
 
 
 # Year
@@ -92,12 +86,7 @@ ggplot(data = HxMx) +
   labs(title = "Semester") 
 
 
-# User ID
-### Too many records to show cleanly
-#ggplot(data = HxMx) +
-#  geom_bar(mapping = aes(x = userid_DI)) +
-#  theme(axis.title.x = element_blank()) +
-#  labs(title = "User Id")
+# User ID -- too many records to show cleanly
 
 
 # Registered
@@ -167,6 +156,12 @@ ggplot() +
 
 
 # Gender
+  # Show counts by values
+HxMx %>%
+  group_by(gender) %>%
+  summarize(n = n())
+
+  # Keep 'o' as a value - 17 observations
 HxMx %>%
   subset(!is.na(gender)) %>%
 ggplot() +
@@ -196,7 +191,7 @@ ggplot() +
   theme(axis.title.x = element_blank()) +
   labs(title = "Letter Grade") 
 
-# Grades for those not earning an "F"
+  # Grades for those not earning an "F"
 HxMx %>%
   subset(!is.na(letter_grade)) %>%
   ggplot() +
