@@ -5,9 +5,6 @@
 
 # -----Set up environment -----
 library(tidyverse)
-library(dplyr)
-library(stringr)
-library(ggplot2)
 library(scales)
 library(DataExplorer)
 
