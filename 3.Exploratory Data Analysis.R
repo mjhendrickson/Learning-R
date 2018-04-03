@@ -32,7 +32,7 @@ create_report(HxMx)
 
 # ===== EDA Pt.1 Single Variable =====
 
-# Course ID
+# Course ID (factor)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = fct_infreq(course_id), fill = institution)) +
   scale_fill_manual(values = c("#C90016", "#8A8B8C")) + # hex colors matching institution
@@ -43,7 +43,7 @@ ggplot(data = HxMx) +
   labs(title = "Course ID")
 
 
-# Institution
+# Institution (factor)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = institution, fill = institution)) +
   scale_fill_manual(values = c("#C90016", "#8A8B8C")) + # hex colors matching institution
@@ -52,7 +52,7 @@ ggplot(data = HxMx) +
   labs(title = "Institution") 
 
 
-# Course code
+# Course code (factor)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = fct_infreq(course_code), fill = institution)) +
   scale_fill_manual(values = c("#C90016", "#8A8B8C")) + # hex colors matching institution
@@ -62,7 +62,7 @@ ggplot(data = HxMx) +
   labs(title = "Course Code")
 
 
-# Year
+# Year (integer)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = year)) +
   scale_y_continuous(name = " ", labels = comma) +
@@ -70,7 +70,7 @@ ggplot(data = HxMx) +
   labs(title = "Year") 
 
 
-# Term
+# Term (factor)
 HxMx %>%
   subset(!is.na(term)) %>%
 ggplot() +
@@ -80,7 +80,7 @@ ggplot() +
   labs(title = "Term") 
 
 
-# Semester
+# Semester (factor)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = semester)) +
   scale_y_continuous(name = " ", labels = comma) +
@@ -89,10 +89,10 @@ ggplot(data = HxMx) +
   labs(title = "Semester") 
 
 
-# User ID -- too many records to show cleanly
+# User ID (factor) -- too many records to show cleanly
 
 
-# Registered
+# Registered (integer)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = registered)) +
   scale_y_continuous(name = " ", labels = comma) +
@@ -100,7 +100,7 @@ ggplot(data = HxMx) +
   labs(title = "Registered")
 
 
-# Viewed
+# Viewed (integer)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = viewed)) +
   scale_y_continuous(name = " ", labels = comma) +
@@ -108,7 +108,7 @@ ggplot(data = HxMx) +
   labs(title = "Viewed") 
 
 
-# Explored
+# Explored (integer)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = explored)) +
   scale_y_continuous(name = " ", labels = comma) +
@@ -116,7 +116,7 @@ ggplot(data = HxMx) +
   labs(title = "Explored") 
 
 
-# Certified
+# Certified (integer)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = certified)) +
   scale_y_continuous(name = " ", labels = comma) +
@@ -124,7 +124,7 @@ ggplot(data = HxMx) +
   labs(title = "Certified") 
 
 
-# Country code
+# Country code (factor)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = fct_infreq(final_cc_cname_DI))) +
   scale_x_discrete(name = " ") +
@@ -134,7 +134,7 @@ ggplot(data = HxMx) +
   labs(title = "Country Code")
 
 
-# Level of education
+# Level of education (factor)
 HxMx %>%
   subset(!is.na(LoE_DI)) %>%
 ggplot() +
@@ -150,7 +150,7 @@ ggplot() +
   labs(title = "Level of Education")
 
 
-# Year of birth
+# Year of birth (integer)
 HxMx %>%
   subset(!is.na(YoB)) %>%
 ggplot() +
@@ -162,7 +162,7 @@ ggplot() +
   labs(title = "Year of Birth")
 
 
-# Gender
+# Gender (factor)
   # Show counts by values
 HxMx %>%
   group_by(gender) %>%
@@ -178,7 +178,7 @@ ggplot() +
   labs(title = "Gender") 
 
 
-# Grade
+# Grade (factor)
 HxMx %>%
   subset(!is.na(grade)) %>%
 ggplot() +
@@ -197,7 +197,7 @@ ggplot() +
   labs(title = "Grade") 
 
 
-# Letter grade
+# Letter grade (factor)
 HxMx %>%
   subset(!is.na(letter_grade)) %>%
 ggplot() +
@@ -218,7 +218,7 @@ HxMx %>%
   labs(title = "Letter Grade") 
 
 
-# Start time
+# Start time (factor)
 HxMx %>%
   summarize(
     mean  = mean(start_time_DI, na.rm = TRUE),
@@ -248,7 +248,7 @@ ggplot(data = HxMx) +
   labs(title = "Start Month")
 
 
-# Last event
+# Last event (factor)
 HxMx %>%
   summarize(
     mean  = mean(last_event_DI, na.rm = TRUE),
@@ -282,7 +282,7 @@ ggplot() +
   labs(title = "Last Event Month")
 
 
-# Number of events
+# Number of events (integer)
 HxMx %>%
   summarize(
     mean  = mean(nevents, na.rm = TRUE),
@@ -304,7 +304,7 @@ ggplot() +
   labs(title = "Number of Events") 
 
 
-# Events indicator
+# Events indicator (integer)
 HxMx %>%
   subset(!is.na(nevents_ind)) %>%
 ggplot() +
@@ -314,7 +314,7 @@ ggplot() +
   labs(title = "Participated in an Event") 
 
 
-# Number of days active
+# Number of days active (integer)
 HxMx %>%
   subset(!is.na(ndays_act)) %>%
 ggplot() +
@@ -324,7 +324,7 @@ ggplot() +
   labs(title = "Number of Days") 
 
 
-# Days active indicator
+# Days active indicator (integer)
 HxMx %>%
   subset(!is.na(ndays_act_ind)) %>%
 ggplot() +
@@ -334,7 +334,7 @@ ggplot() +
   labs(title = "Was Active") 
 
 
-# Number of video plays
+# Number of video plays (integer)
 HxMx %>%
   subset(!is.na(nplay_video)) %>%
 ggplot() +
@@ -344,7 +344,7 @@ ggplot() +
   labs(title = "Number of Video Plays") 
 
 
-# Video plays indicator
+# Video plays indicator (integer)
 HxMx %>%
   subset(!is.na(nplay_video_ind)) %>%
 ggplot() +
@@ -354,7 +354,7 @@ ggplot() +
   labs(title = "Played Video") 
 
 
-# Number of chapters
+# Number of chapters (integer)
 HxMx %>%
   subset(!is.na(nchapters)) %>%
 ggplot() +
@@ -364,7 +364,7 @@ ggplot() +
   labs(title = "Number of Chapters") 
 
 
-# Chapters indicator
+# Chapters indicator (integer)
 HxMx %>%
   subset(!is.na(nchapters_ind)) %>%
 ggplot() +
@@ -374,7 +374,7 @@ ggplot() +
   labs(title = "Read a Chapter") 
 
 
-# Number of forum posts
+# Number of forum posts (integer)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = nforum_posts)) +
   scale_y_continuous(name = " ", labels = comma) +
@@ -382,7 +382,7 @@ ggplot(data = HxMx) +
   labs(title = "Number of Forum Posts") 
 
 
-# Forum posts indicator
+# Forum posts indicator (integer)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = nforum_posts_ind)) +
   scale_y_continuous(name = " ", labels = comma) +
@@ -390,7 +390,7 @@ ggplot(data = HxMx) +
   labs(title = "Posted in Forum") 
 
 
-# Inconsistent Flag
+# Inconsistent Flag (integer)
 HxMx %>%
   subset(!is.na(incomplete_flag)) %>%
 ggplot() +
@@ -400,7 +400,7 @@ ggplot() +
   labs(title = "Incomplete Flag") 
 
 
-# Short title
+# Short title (factor)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = fct_infreq(short_title), fill = institution)) +
   scale_fill_manual(values = c("#C90016", "#8A8B8C")) + # hex colors matching institution
@@ -410,7 +410,7 @@ ggplot(data = HxMx) +
   labs(title = "Course Short Title") 
 
 
-# Full title
+# Full title (factor)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = fct_infreq(full_title), fill = institution)) +
   scale_fill_manual(values = c("#C90016", "#8A8B8C")) + # hex colors matching institution
