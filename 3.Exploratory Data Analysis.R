@@ -196,6 +196,15 @@ ggplot() +
   theme(axis.title.x = element_blank()) +
   labs(title = "Grade") 
 
+  # Removing NA values and grade = 0
+HxMx %>% 
+  subset(!is.na(grade) & grade != 0) %>% 
+ggplot() +
+  geom_histogram(mapping = aes(x = grade), binwidth = 0.1) +
+  scale_y_continuous(name = " ", labels = comma) +
+  theme(axis.title.x = element_blank()) +
+  labs(title = "Grade") 
+
 
 # Letter grade (factor)
 HxMx %>%
