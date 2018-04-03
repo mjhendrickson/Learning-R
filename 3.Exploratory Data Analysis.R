@@ -3,13 +3,14 @@
 # By: Matthew Hendrickson
 # What: Exploratory Data Analysis
 
-# -----Set up environment -----
+# ----- Set up environment -----
 library(tidyverse)
 library(forcats)
 library(scales)
 library(DataExplorer)
 
-
+# ----- Open HxMx after session refresh -----
+# HxMx = read.csv("HxMx.csv")
 
 # ----- Next Steps -----
 # 1. User ID - too many records to show cleanly
