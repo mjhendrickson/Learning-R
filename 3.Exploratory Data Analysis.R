@@ -187,6 +187,15 @@ ggplot() +
   theme(axis.title.x = element_blank()) +
   labs(title = "Grade") 
 
+  # Remove grade of "0"
+HxMx %>%
+  subset(!is.na(grade) & grade != 0) %>%
+ggplot() +
+  geom_bar(mapping = aes(x = grade)) +
+  scale_y_continuous(name = " ", labels = comma) +
+  theme(axis.title.x = element_blank()) +
+  labs(title = "Grade") 
+
   # As a histogram, binning results
 HxMx %>%
   subset(!is.na(grade)) %>%
@@ -196,7 +205,7 @@ ggplot() +
   theme(axis.title.x = element_blank()) +
   labs(title = "Grade") 
 
-  # Removing NA values and grade = 0
+  # As a histogram, removing NA values and grade = 0
 HxMx %>% 
   subset(!is.na(grade) & grade != 0) %>% 
 ggplot() +
