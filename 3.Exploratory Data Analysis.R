@@ -16,6 +16,7 @@ glimpse(HxMx)
 # ----- Next Steps -----
 # 1. User ID - too many records to show cleanly
 # 2. Edit scales / limits for plots
+  # Integer fields showing as #.# - round to whole number
 
 
 
