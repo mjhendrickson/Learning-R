@@ -10,7 +10,8 @@ library(scales)
 library(DataExplorer)
 
 # ----- Open HxMx after session refresh -----
-# HxMx = read.csv("HxMx.csv")
+HxMx = read.csv("HxMx.csv")
+glimpse(HxMx)
 
 # ----- Next Steps -----
 # 1. User ID - too many records to show cleanly
