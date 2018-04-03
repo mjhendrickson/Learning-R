@@ -501,6 +501,8 @@ ggplot() +
 
 
 # First attempt at 2 layer
-ggplot(data = HxMx, mapping = aes(x = nchapters, y = ndays_act))
+HxMx %>% 
+  subset(!is.na(nchapters) & !is.na(ndays_act)) %>% 
+ggplot(data = HxMx, mapping = aes(x = nchapters, y = ndays_act)) +
   geom_point() +
   geom_smooth()
