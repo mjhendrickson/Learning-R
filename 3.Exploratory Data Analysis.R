@@ -35,18 +35,18 @@ create_report(HxMx)
 # Course ID
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = fct_infreq(course_id), fill = institution)) +
-  scale_fill_manual(values = c("#C90016","#8A8B8C")) + # hex colors matching institution
+  scale_fill_manual(values = c("#C90016", "#8A8B8C")) + # hex colors matching institution
   scale_x_discrete(name = " ") +
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank(),
-        axis.text.x = element_text(angle=90, vjust=0.5)) +
+        axis.text.x = element_text(angle = 90, vjust = 0.5)) +
   labs(title = "Course ID")
 
 
 # Institution
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = institution, fill = institution)) +
-  scale_fill_manual(values = c("#C90016","#8A8B8C")) + # hex colors matching institution
+  scale_fill_manual(values = c("#C90016", "#8A8B8C")) + # hex colors matching institution
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Institution") 
@@ -55,10 +55,10 @@ ggplot(data = HxMx) +
 # Course code
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = fct_infreq(course_code), fill = institution)) +
-  scale_fill_manual(values = c("#C90016","#8A8B8C")) + # hex colors matching institution
+  scale_fill_manual(values = c("#C90016", "#8A8B8C")) + # hex colors matching institution
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank(),
-        axis.text.x = element_text(angle=90, vjust=0.5)) +
+        axis.text.x = element_text(angle = 90, vjust = 0.5)) +
   labs(title = "Course Code")
 
 
@@ -85,7 +85,7 @@ ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = semester)) +
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank(),
-        axis.text.x = element_text(angle=90, vjust=0.5)) +
+        axis.text.x = element_text(angle = 90, vjust = 0.5)) +
   labs(title = "Semester") 
 
 
@@ -130,7 +130,7 @@ ggplot(data = HxMx) +
   scale_x_discrete(name = " ") +
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank(),
-        axis.text.x = element_text(angle=90, vjust=0.5)) +
+        axis.text.x = element_text(angle = 90, vjust = 0.5)) +
   labs(title = "Country Code")
 
 
@@ -139,10 +139,14 @@ HxMx %>%
   subset(!is.na(LoE_DI)) %>%
 ggplot() +
   geom_bar(mapping = aes(x = LoE_DI)) +
-  scale_x_discrete(name = " ", limits = c("Less than Secondary", "Secondary", "Bachelor's", "Master's", "Doctorate")) +
+  scale_x_discrete(name = " ", limits = c("Less than Secondary", 
+                                          "Secondary", 
+                                          "Bachelor's", 
+                                          "Master's", 
+                                          "Doctorate")) +
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank(),
-        axis.text.x = element_text(angle=90, vjust=0.5)) +
+        axis.text.x = element_text(angle = 90, vjust = 0.5)) +
   labs(title = "Level of Education")
 
 
@@ -154,7 +158,7 @@ ggplot() +
   scale_x_discrete(name = " ") +
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank(),
-        axis.text.x = element_text(angle=90, vjust=0.5)) +
+        axis.text.x = element_text(angle = 90, vjust = 0.5)) +
   labs(title = "Year of Birth")
 
 
@@ -198,7 +202,7 @@ HxMx %>%
   subset(!is.na(letter_grade)) %>%
 ggplot() +
   geom_bar(mapping = aes(x = letter_grade)) +
-  scale_x_discrete(limits = c("A","B","C","D","F")) + #,NA)) + inclue for NA, also remove subset
+  scale_x_discrete(limits = c("A", "B", "C", "D", "F")) + #,NA)) + inclue for NA, also remove subset
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Letter Grade") 
@@ -208,7 +212,7 @@ HxMx %>%
   subset(!is.na(letter_grade)) %>%
   ggplot() +
   geom_bar(mapping = aes(x = letter_grade)) +
-  scale_x_discrete(limits = c("A","B","C","D")) +
+  scale_x_discrete(limits = c("A", "B", "C", "D")) +
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Letter Grade") 
@@ -217,22 +221,22 @@ HxMx %>%
 # Start time
 HxMx %>%
   summarize(
-    mean  = mean(start_time_DI, na.rm=TRUE),
-    med   = median(start_time_DI, na.rm=TRUE),
-    iqr   = IQR(start_time_DI, na.rm=TRUE),
-    mad   = mad(start_time_DI, na.rm=TRUE),
-    min   = min(start_time_DI, na.rm=TRUE),
-    max   = max(start_time_DI, na.rm=TRUE),
+    mean  = mean(start_time_DI, na.rm = TRUE),
+    med   = median(start_time_DI, na.rm = TRUE),
+    iqr   = IQR(start_time_DI, na.rm = TRUE),
+    mad   = mad(start_time_DI, na.rm = TRUE),
+    min   = min(start_time_DI, na.rm = TRUE),
+    max   = max(start_time_DI, na.rm = TRUE),
     n     = n()
   )
 
   # As bar graph
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = start_time_DI)) +
-  scale_x_date (name = " ") +
+  scale_x_date(name = " ") +
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank(),
-        axis.text.x = element_text(angle=90, vjust=0.5)) +
+        axis.text.x = element_text(angle = 90, vjust = 0.5)) +
   labs(title = "Start Time")
 
   # As a bar graph by month
@@ -240,19 +244,19 @@ ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = start_time_ym)) +
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank(),
-        axis.text.x = element_text(angle=90, vjust=0.5)) +
+        axis.text.x = element_text(angle = 90, vjust = 0.5)) +
   labs(title = "Start Month")
 
 
 # Last event
 HxMx %>%
   summarize(
-    mean  = mean(last_event_DI, na.rm=TRUE),
-    med   = median(last_event_DI, na.rm=TRUE),
-    sd    = sd(last_event_DI, na.rm=TRUE),
-    mad   = mad(last_event_DI, na.rm=TRUE),
-    min   = min(last_event_DI, na.rm=TRUE),
-    max   = max(last_event_DI, na.rm=TRUE),
+    mean  = mean(last_event_DI, na.rm = TRUE),
+    med   = median(last_event_DI, na.rm = TRUE),
+    sd    = sd(last_event_DI, na.rm = TRUE),
+    mad   = mad(last_event_DI, na.rm = TRUE),
+    min   = min(last_event_DI, na.rm = TRUE),
+    max   = max(last_event_DI, na.rm = TRUE),
     n     = n()
   )
 
@@ -261,10 +265,10 @@ HxMx %>%
   subset(!is.na(last_event_DI)) %>%
 ggplot() +
   geom_bar(mapping = aes(x = last_event_DI)) +
-  scale_x_date (name = " ") +
+  scale_x_date(name = " ") +
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank(),
-        axis.text.x = element_text(angle=90, vjust=0.5)) +
+        axis.text.x = element_text(angle = 90, vjust = 0.5)) +
   labs(title = "Last Event")  
 
   # As bar graph by month
@@ -274,20 +278,20 @@ ggplot() +
   geom_bar(mapping = aes(x = last_event_ym)) +
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank(),
-        axis.text.x = element_text(angle=90, vjust=0.5)) +
+        axis.text.x = element_text(angle = 90, vjust = 0.5)) +
   labs(title = "Last Event Month")
 
 
 # Number of events
 HxMx %>%
   summarize(
-    mean  = mean(nevents, na.rm=TRUE),
-    med   = median(nevents, na.rm=TRUE),
-    sd    = sd(nevents, na.rm=TRUE),
-    iqr   = IQR(nevents, na.rm=TRUE),
-    mad   = mad(nevents, na.rm=TRUE),
-    min   = min(nevents, na.rm=TRUE),
-    max   = max(nevents, na.rm=TRUE),
+    mean  = mean(nevents, na.rm = TRUE),
+    med   = median(nevents, na.rm = TRUE),
+    sd    = sd(nevents, na.rm = TRUE),
+    iqr   = IQR(nevents, na.rm = TRUE),
+    mad   = mad(nevents, na.rm = TRUE),
+    min   = min(nevents, na.rm = TRUE),
+    max   = max(nevents, na.rm = TRUE),
     n     = n()
   )
 
@@ -399,21 +403,21 @@ ggplot() +
 # Short title
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = fct_infreq(short_title), fill = institution)) +
-  scale_fill_manual(values = c("#C90016","#8A8B8C")) + # hex colors matching institution
+  scale_fill_manual(values = c("#C90016", "#8A8B8C")) + # hex colors matching institution
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank(),
-        axis.text.x = element_text(angle=90, vjust=0.5)) +
+        axis.text.x = element_text(angle = 90, vjust = 0.5)) +
   labs(title = "Course Short Title") 
 
 
 # Full title
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = fct_infreq(full_title), fill = institution)) +
-  scale_fill_manual(values = c("#C90016","#8A8B8C")) + # hex colors matching institution
+  scale_fill_manual(values = c("#C90016", "#8A8B8C")) + # hex colors matching institution
   scale_x_discrete(labels = function(x) str_wrap(x, width = 40)) +
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank(),
-        axis.text.x = element_text(angle=90, vjust=0.5)) +
+        axis.text.x = element_text(angle = 90, vjust = 0.5)) +
   labs(title = "Course Full Title") 
 
 
@@ -423,7 +427,7 @@ ggplot(data = HxMx) +
 # First attempt at Institution x Grade (colored by letter_grade)
 ### Still a work in progress
 ggplot(data = HxMx) +
-  geom_point(mapping = aes(x = institution, y=grade, color=letter_grade)) +
+  geom_point(mapping = aes(x = institution, y = grade, color = letter_grade)) +
   scale_y_continuous(name = " ", labels = comma) +
   labs(title = "Grades by Institution")
 
@@ -443,5 +447,5 @@ ggplot(data = HxMx) +
   facet_grid(institution ~ short_title) +
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank(),
-        axis.text.x = element_text(angle=90, vjust=0.5)) +
+        axis.text.x = element_text(angle = 90, vjust = 0.5)) +
   labs(title = "Grade")
