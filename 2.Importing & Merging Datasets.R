@@ -114,6 +114,11 @@ rm(courses)
 
 
 
+# ===== Write HxMx to .csv for recall after refreshing session =====
+write_csv(HxMx, "HxMx.csv")
+
+
+
 # ===== Drop test and created fields =====
 #HXMITX$institution <- NULL
 #HXMITX$course <- NULL
