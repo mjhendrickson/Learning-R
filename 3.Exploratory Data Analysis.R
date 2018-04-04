@@ -295,6 +295,26 @@ ggplot() +
         axis.text.x = element_text(angle = 90, vjust = 0.5)) +
   labs(title = "Last Event")  
 
+  # Investigate outliers
+  # Find cases to extreme right
+filter(HxMx, last_event_DI > "2013-09-06") %>% 
+  group_by(last_event_DI, course_code) %>% 
+  summarize(count = n())
+  #Identified as course CB22x
+filter(HxMx, course_code == "CB22x") %>% 
+  group_by(course_code, semester) %>% 
+  summarize(count = n())
+  #Plot CB22x to see if all values are extreme
+filter(HxMx, course_code == "CB22x") %>% 
+  subset(!is.na(last_event_DI)) %>% 
+ggplot() +
+  geom_histogram(mapping = aes(x = last_event_DI)) +
+  scale_x_date(name = " ") +
+  scale_y_continuous(name = " ", labels = comma) +
+  theme(axis.title.x = element_blank(),
+        axis.text.x = element_text(angle = 90, vjust = 0.5)) +
+  labs(title = "Last Event") 
+
   # As bar graph by month
 HxMx %>%
   subset(!is.na(last_event_ym)) %>%
