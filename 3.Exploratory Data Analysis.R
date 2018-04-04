@@ -97,7 +97,7 @@ ggplot(data = HxMx) +
 # Registered (integer)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = registered)) +
-  scale_x_continuous(name = " ", breaks = c(1)) +
+  scale_x_discrete(name = " ", limits = c("Yes")) +
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Registered")
@@ -396,7 +396,7 @@ HxMx %>%
   subset(!is.na(nchapters_ind)) %>%
 ggplot() +
   geom_bar(mapping = aes(x = nchapters_ind)) +
-  scale_x_continuous(name = " ", breaks = c(1)) +
+  scale_x_discrete(name = " ", limits = c("Yes")) +
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Read a Chapter") 
@@ -424,7 +424,7 @@ HxMx %>%
   subset(!is.na(incomplete_flag)) %>%
 ggplot() +
   geom_bar(mapping = aes(x = incomplete_flag)) +
-  scale_x_continuous(name = " ", breaks = c(1)) +
+  scale_x_discrete(name = " ", limits = c("Yes")) +
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Incomplete Flag") 
