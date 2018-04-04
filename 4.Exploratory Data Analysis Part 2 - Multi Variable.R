@@ -19,7 +19,7 @@ glimpse(HxMx)
 # ===== EDA Pt.2 Multi-Variable =====
 ### Still in early exploration
 
-# ----- Institution x Grade (colored by letter_grade)
+# ----- Institution x Grade (colored by letter_grade) -----
 ggplot(data = HxMx) +
   geom_point(mapping = aes(x = institution, y = grade, color = letter_grade)) +
   scale_y_continuous(name = " ", labels = comma) +
@@ -35,7 +35,7 @@ HxMx %>%
 
 
 
-# ----- Grade x Institution
+# ----- Grade x Institution -----
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = grade), binwidth = 0.05) +
   facet_grid(. ~institution) +
@@ -54,7 +54,7 @@ HxMx %>%
   labs(title = "Grade") 
 
 
-# ----- Grade x Institution x Course
+# ----- Grade x Institution x Course -----
 HxMx %>% 
   subset(short_title != "-" &
            !is.na(letter_grade)) %>% 
@@ -68,7 +68,7 @@ HxMx %>%
 
 
 
-# ----- Grade x Letter Grade
+# ----- Grade x Letter Grade -----
 HxMx %>% 
   subset(!is.na(grade) & grade != 0) %>% 
   ggplot() +
@@ -78,7 +78,7 @@ HxMx %>%
 
 
 
-# ----- First attempt at 2 layer
+# ----- First attempt at 2 layer -----
 HxMx %>% 
   subset(!is.na(nchapters) & !is.na(ndays_act)) %>% 
   ggplot(data = HxMx, mapping = aes(x = nchapters, y = ndays_act)) +
