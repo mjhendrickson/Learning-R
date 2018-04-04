@@ -1,5 +1,5 @@
 # ===== Introduction =====
-# Project: Learning R by Doing - HarvardX -MITx Analysis
+# Project: Learning R by Doing - HarvardX-MITx Analysis
 # By: Matthew Hendrickson
 # What: Exploratory Data Analysis
 
