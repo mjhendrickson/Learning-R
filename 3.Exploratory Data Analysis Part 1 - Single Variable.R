@@ -7,6 +7,7 @@
 library(tidyverse)
 library(forcats)
 library(scales)
+library(binr)
 
 # ----- Open HxMx after session refresh -----
 HxMx <- read_csv("HxMx.csv")
