@@ -1,7 +1,7 @@
 # ===== Introduction =====
 # Project: Learning R by Doing - HarvardX-MITx Analysis
 # By: Matthew Hendrickson
-# What: Exploratory Data Analysis
+# What: Exploratory Data Analysis Part 1 - Single Variable
 
 # ----- Set up environment -----
 library(tidyverse)
