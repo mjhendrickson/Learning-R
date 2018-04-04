@@ -19,7 +19,7 @@ glimpse(HxMx)
 
 # ===== EDA Pt.1 Single Variable =====
 
-# ----- Course ID (character)
+# ----- Course ID (character) -----
 # Distribution of course_id, colored by institution
 # More useful if split out by institution, course_code, and term
 ggplot(data = HxMx) +
@@ -33,7 +33,7 @@ ggplot(data = HxMx) +
 
 
 
-# ----- Institution (character)
+# ----- Institution (character) -----
 # Distribution of institution, colored by institution
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = institution, fill = institution)) +
@@ -49,7 +49,7 @@ HxMx %>%
 
 
 
-# ----- Course code (character)
+# ----- Course code (character) -----
 # Distribution of course_code, colored by institution
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = fct_infreq(course_code), fill = institution)) +
@@ -66,7 +66,7 @@ HxMx %>%
 
 
 
-# ----- Year (integer)
+# ----- Year (integer) -----
 # Distribution of year
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = year)) +
@@ -82,7 +82,7 @@ HxMx %>%
 
 
 
-# ----- Term (character)
+# ----- Term (character) -----
 # Distribution of term
 HxMx %>%
   subset(!is.na(term)) %>%
@@ -99,7 +99,7 @@ HxMx %>%
 
 
 
-# ----- Semester (character)
+# ----- Semester (character) -----
 # Distribution of semester
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = semester)) +
@@ -115,7 +115,7 @@ HxMx %>%
 
 
 
-# ----- User ID (character) -- too many records to show cleanly
+# ----- User ID (character) -- too many records to show cleanly -----
 # Distribution of userid_DI
 # Some users took multiple courses
 #ggplot(data = HxMx) +
@@ -125,7 +125,7 @@ HxMx %>%
 
 
 
-# ----- Registered (integer)
+# ----- Registered (integer) -----
 # Distribution of registered
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = registered)) +
@@ -141,7 +141,7 @@ HxMx %>%
 
 
 
-# ----- Viewed (integer)
+# ----- Viewed (integer) -----
 # Distribution of viewed
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = viewed)) +
@@ -157,7 +157,7 @@ HxMx %>%
 
 
 
-# ----- Explored (integer)
+# ----- Explored (integer) -----
 # Distribution of explored
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = explored)) +
@@ -173,7 +173,7 @@ HxMx %>%
 
 
 
-# ----- Certified (integer)
+# ----- Certified (integer) -----
 # Distribution of certified
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = certified)) +
@@ -189,7 +189,7 @@ HxMx %>%
 
 
 
-# ----- Country code (character)
+# ----- Country code (character) -----
 # Distribution of final_cc_cname_DI
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = fct_infreq(final_cc_cname_DI))) +
@@ -207,7 +207,7 @@ HxMx %>%
   arrange(desc(n))
 
 
-# ----- Level of education (character)
+# ----- Level of education (character) -----
 # Distribution of LoE_DI
 HxMx %>%
   subset(!is.na(LoE_DI)) %>%
@@ -232,7 +232,7 @@ HxMx %>%
 
 
 
-# ----- Year of birth (character)
+# ----- Year of birth (character) -----
 # Distribution of YoB
 HxMx %>%
   subset(!is.na(YoB)) %>%
@@ -253,7 +253,7 @@ HxMx %>%
 
 
 
-# ----- Gender (character)
+# ----- Gender (character) -----
 # Distribution of gender
 # Keep 'o' as a value - 17 observations
 HxMx %>%
@@ -271,7 +271,7 @@ HxMx %>%
 
 
 
-# ----- Grade (double)
+# ----- Grade (double) -----
 # Distribution of grade
 HxMx %>%
   subset(!is.na(grade)) %>%
@@ -310,7 +310,7 @@ ggplot() +
 
 
 
-# ----- Letter grade (character)
+# ----- Letter grade (character) -----
 # Distribution of letter_grade
 HxMx %>%
   subset(!is.na(letter_grade)) %>%
@@ -338,7 +338,7 @@ HxMx %>%
 
 
 
-# ----- Start time (date)
+# ----- Start time (date) -----
 # Summary stats of start_time_DI
 HxMx %>%
   summarize(
@@ -375,7 +375,7 @@ HxMx %>%
 
 
 
-# ----- Last event (date)
+# ----- Last event (date) -----
 # Summary stats of last_event_DI
 HxMx %>%
   summarize(
@@ -438,7 +438,7 @@ HxMx %>%
 
 
 
-# ----- Number of events (integer)
+# ----- Number of events (integer) -----
 # Summary stats of nevents
 HxMx %>%
   summarize(
@@ -479,7 +479,7 @@ HxMx %>%
 
 
 
-# ----- Events indicator (integer)
+# ----- Events indicator (integer) -----
 # Distribution of nevents_ind
 HxMx %>%
   subset(!is.na(nevents_ind)) %>%
@@ -497,7 +497,7 @@ HxMx %>%
 
 
 
-# ----- Number of days active (integer)
+# ----- Number of days active (integer) -----
 # Distribution of ndays_act
 # Not useful without modification - check ndays_act_ind
 # Reduce to a reasonable range
@@ -525,7 +525,7 @@ HxMx %>%
 
 
 
-# ----- Days active indicator (integer)
+# ----- Days active indicator (integer) -----
 # Distribution of ndays_act_ind
 HxMx %>%
   subset(!is.na(ndays_act_ind)) %>%
@@ -543,7 +543,7 @@ HxMx %>%
 
 
 
-# ----- Number of video plays (integer)
+# ----- Number of video plays (integer) -----
 # Distribution of nplay_video
 # Not useful without modification - check nplay_video_ind
 # Reduce to a reasonable range
@@ -571,7 +571,7 @@ HxMx %>%
 
 
 
-# ----- Video plays indicator (integer)
+# ----- Video plays indicator (integer) -----
 # Distribution of nplay_video_ind
 HxMx %>%
   subset(!is.na(nplay_video_ind)) %>%
@@ -589,7 +589,7 @@ HxMx %>%
 
 
 
-# ----- Number of chapters (integer)
+# ----- Number of chapters (integer) -----
 # Distribution of nchapters
 HxMx %>%
   subset(!is.na(nchapters)) %>%
@@ -606,7 +606,7 @@ HxMx %>%
 
 
 
-# ----- Chapters indicator (integer)
+# ----- Chapters indicator (integer) -----
 # Distribution of nchapters_ind
 HxMx %>%
   subset(!is.na(nchapters_ind)) %>%
@@ -624,7 +624,7 @@ HxMx %>%
 
 
 
-# ----- Number of forum posts (integer)
+# ----- Number of forum posts (integer) -----
 # Distribution of nforum_posts
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = nforum_posts)) +
@@ -639,7 +639,7 @@ HxMx %>%
 
 
 
-# ----- Forum posts indicator (integer)
+# ----- Forum posts indicator (integer) -----
 # Distribution of nforum_posts_ind
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = nforum_posts_ind)) +
@@ -655,7 +655,7 @@ HxMx %>%
 
 
 
-# ----- Inconsistent Flag (integer)
+# ----- Inconsistent Flag (integer) -----
 # Distribution of incomplete_flag
 HxMx %>%
   subset(!is.na(incomplete_flag)) %>%
@@ -673,7 +673,7 @@ HxMx %>%
 
 
 
-# ----- Short title (character)
+# ----- Short title (character) -----
 # Distribution of short_title, colored by institution
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = fct_infreq(short_title), fill = institution)) +
@@ -690,7 +690,7 @@ HxMx %>%
 
 
 
-# ----- Full title (character)
+# ----- Full title (character) -----
 # Distribution of full_title, colored by institution
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = fct_infreq(full_title), fill = institution)) +
