@@ -13,8 +13,7 @@ HxMx <- read_csv("HxMx.csv")
 glimpse(HxMx)
 
 # ----- Next Steps -----
-# 1. User ID - too many records to show cleanly
-# 2. Edit scales / limits for plots
+# 1. 
 
 
 
