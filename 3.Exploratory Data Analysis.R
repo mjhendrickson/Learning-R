@@ -66,6 +66,7 @@ ggplot(data = HxMx) +
 # Year (integer)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = year)) +
+  scale_x_continuous(name = " ", breaks = c(2012, 2013)) +
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Year") 
@@ -96,6 +97,7 @@ ggplot(data = HxMx) +
 # Registered (integer)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = registered)) +
+  scale_x_continuous(name = " ", breaks = c(1)) +
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Registered")
@@ -104,6 +106,7 @@ ggplot(data = HxMx) +
 # Viewed (integer)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = viewed)) +
+  scale_x_continuous(name = " ", breaks = c(0, 1)) +
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Viewed") 
@@ -112,6 +115,7 @@ ggplot(data = HxMx) +
 # Explored (integer)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = explored)) +
+  scale_x_continuous(name = " ", breaks = c(0, 1)) +
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Explored") 
@@ -120,6 +124,7 @@ ggplot(data = HxMx) +
 # Certified (integer)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = certified)) +
+  scale_x_continuous(name = " ", breaks = c(0, 1)) +
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Certified") 
@@ -328,6 +333,7 @@ HxMx %>%
   subset(!is.na(nevents_ind)) %>%
 ggplot() +
   geom_bar(mapping = aes(x = nevents_ind)) +
+  scale_x_continuous(name = " ", breaks = c(1)) +
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Participated in an Event") 
@@ -348,6 +354,7 @@ HxMx %>%
   subset(!is.na(ndays_act_ind)) %>%
 ggplot() +
   geom_bar(mapping = aes(x = ndays_act_ind)) +
+  scale_x_continuous(name = " ", breaks = c(0, 1)) +
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Was Active") 
@@ -368,6 +375,7 @@ HxMx %>%
   subset(!is.na(nplay_video_ind)) %>%
 ggplot() +
   geom_bar(mapping = aes(x = nplay_video_ind)) +
+  scale_x_continuous(name = " ", breaks = c(1)) +
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Played Video") 
@@ -388,6 +396,7 @@ HxMx %>%
   subset(!is.na(nchapters_ind)) %>%
 ggplot() +
   geom_bar(mapping = aes(x = nchapters_ind)) +
+  scale_x_continuous(name = " ", breaks = c(1)) +
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Read a Chapter") 
@@ -404,6 +413,7 @@ ggplot(data = HxMx) +
 # Forum posts indicator (integer)
 ggplot(data = HxMx) +
   geom_bar(mapping = aes(x = nforum_posts_ind)) +
+  scale_x_continuous(name = " ", breaks = c(0, 1)) +
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Posted in Forum") 
@@ -414,6 +424,7 @@ HxMx %>%
   subset(!is.na(incomplete_flag)) %>%
 ggplot() +
   geom_bar(mapping = aes(x = incomplete_flag)) +
+  scale_x_continuous(name = " ", breaks = c(1)) +
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Incomplete Flag") 
