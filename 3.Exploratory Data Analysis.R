@@ -10,7 +10,7 @@ library(scales)
 library(DataExplorer)
 
 # ----- Open HxMx after session refresh -----
-HxMx = read.csv("HxMx.csv")
+HxMx <- read_csv("HxMx.csv")
 glimpse(HxMx)
 
 # ----- Next Steps -----
