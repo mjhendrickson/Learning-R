@@ -7,7 +7,7 @@
 install.packages("tidyverse")
 install.packages("forcats")
 install.packages("binr")
-install.packages("DataExplorer")
+
 
 # ===== Load needed packages =====
 library(tidyverse)
@@ -15,4 +15,3 @@ library(forcats)
 library(scales)
 library(lubridate)
 library(binr)
-library(DataExplorer)
