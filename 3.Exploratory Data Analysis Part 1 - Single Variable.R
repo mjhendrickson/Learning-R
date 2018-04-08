@@ -117,12 +117,36 @@ HxMx %>%
 
 
 # ----- User ID (character) -- too many records to show cleanly -----
-# Distribution of userid_DI
-# Some users took multiple courses
-#ggplot(data = HxMx) +
-#  geom_bar(mapping = aes(x = userid_DI)) +
-#  theme(axis.title.x = element_blank()) +
-#  labs(title = "User ID")
+# Distribution of userid_DI - of those taking 10+ courses
+HxMx %>%
+  subset(userid_DI >= 10) %>%
+ggplot() +
+  geom_bar(mapping = aes(x = userid_DI)) +
+  scale_x_discrete(name = " ") +
+  scale_y_continuous(name = " ", labels = comma) +
+  theme(axis.title.x = element_blank(),
+        axis.text.x = element_text(angle = 90, vjust = 0.5)) +
+  labs(title = "User ID")
+
+# Counts of userid_DI
+  # Some users are present multiple times
+HxMx %>%
+  group_by(userid_DI) %>%
+  summarize(n = n())
+
+# Count of records
+HxMx %>%
+  summarize(n = n())
+
+# Unique count of userid_DI
+HxMx %>% 
+  summarize(n = n_distinct(userid_DI))
+
+# Users with the most records - sort desc
+HxMx %>%
+  group_by(userid_DI) %>% 
+  tally(sort = T) %>% 
+  arrange(desc(n))
 
 
 
