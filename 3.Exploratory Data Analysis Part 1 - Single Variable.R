@@ -118,6 +118,7 @@ HxMx %>%
 
 # ----- User ID (character) -- too many records to show cleanly -----
 # Distribution of userid_DI - of those taking 10+ courses
+  # NOTE: this takes a long time to run
 HxMx %>%
   subset(userid_DI >= 10) %>%
 ggplot() +
