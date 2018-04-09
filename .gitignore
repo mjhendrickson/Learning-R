@@ -16,6 +16,7 @@
 
 # RStudio files
 .Rproj.user/
+Learn R by Doing.Rproj
 
 # produced vignettes
 vignettes/*.html
@@ -27,10 +28,20 @@ vignettes/*.pdf
 # knitr and R markdown default cache directories
 /*_cache/
 /cache/
+Learn R by Doing.rmd
 
 # Temporary files created by R markdown
 *.utf8.md
 *.knit.md
 
+# Data Files
+HMXPC13_DI_v2_5-14-14.csv
+hxmitx_course_reference.csv
+HxMx.csv
+Person Course Deidentification.pdf
+Person Course Documentation.pdf
+
 # Other files
 Learn R by Doing Jupyter Nobebook.ipynb
+Learn R by Doing Jupyter Nobebook-checkpoint.ipynb
+.ipynb_checkpoints
