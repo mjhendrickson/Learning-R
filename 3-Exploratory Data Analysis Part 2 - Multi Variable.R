@@ -14,7 +14,7 @@ HxMx <- read_csv("HxMx.csv")
 glimpse(HxMx)
 
 # ----- Next Steps -----
-# 1. GitHub Desktop Test
+# 1. 
 
 
 
@@ -22,23 +22,30 @@ glimpse(HxMx)
 ### Still in early exploration
 
 # ----- Institution x Grade (colored by letter_grade) -----
-ggplot(data = HxMx) +
-  geom_point(mapping = aes(x = institution, y = grade, color = letter_grade)) +
-  scale_y_continuous(name = " ", labels = comma) +
-  labs(title = "Grades by Institution")
-
-# Remove NA and 0
+# Comparison of grade distribution by institution
 HxMx %>% 
-  subset(!is.na(grade) & grade != 0) %>%
-  ggplot() +
+  subset(!is.na(grade) & grade != 0) %>% # Remove NA and 0
+ggplot() +
   geom_point(mapping = aes(x = institution, y = grade, color = letter_grade)) +
   scale_y_continuous(name = " ", labels = comma) +
   labs(title = "Grades by Institution")
 
+# Alternate comparison
+HxMx %>% 
+  subset(!is.na(grade) & grade != 0) %>% # Remove NA and 0
+ggplot() +
+  geom_count(mapping = aes(x = letter_grade, y = institution))
+
+# Remove F's for additional clarity
+HxMx %>% 
+  subset(!is.na(grade) & grade != 0 & letter_grade != "F") %>%
+ggplot() +
+  geom_count(mapping = aes(x = letter_grade, y = institution))
 
 
 # ----- Grade x Institution -----
-ggplot(data = HxMx) +
+HxMx %>% 
+ggplot() +
   geom_bar(mapping = aes(x = grade), binwidth = 0.05) +
   facet_grid(. ~institution) +
   scale_y_continuous(name = " ", labels = comma) +
@@ -48,19 +55,46 @@ ggplot(data = HxMx) +
 # Remove NA and 0
 HxMx %>% 
   subset(!is.na(grade) & grade != 0) %>%
-  ggplot() +
+ggplot() +
   geom_histogram(mapping = aes(x = grade), binwidth = 0.05) +
   facet_grid(. ~institution) +
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Grade") 
 
+# Alternate view - frequency
+HxMx %>% 
+  subset(!is.na(grade) & grade != 0) %>%
+ggplot(mapping = aes(x = grade)) +
+  geom_freqpoly(mapping = aes(color = institution)) +
+  scale_y_continuous(name = " ", labels = comma) +
+  theme(axis.title.x = element_blank()) +
+  labs(title = "Grade") 
+
+# Alternate view - boxplot
+HxMx %>% 
+  subset(!is.na(grade) & grade != 0) %>%
+ggplot(mapping = aes(x = institution, y = grade)) +
+  geom_boxplot() +
+  scale_y_continuous(name = " ", labels = comma) +
+  theme(axis.title.x = element_blank()) +
+  labs(title = "Grade") 
+
+# Remove F's for additional clarity
+HxMx %>% 
+  subset(!is.na(grade) & grade != 0 & letter_grade != "F") %>%
+ggplot(mapping = aes(x = institution, y = grade)) +
+  geom_boxplot() +
+  scale_y_continuous(name = " ", labels = comma) +
+  theme(axis.title.x = element_blank()) +
+  labs(title = "Grade") 
+
+
 
 # ----- Grade x Institution x Course -----
 HxMx %>% 
-  subset(short_title != "-" &
-           !is.na(letter_grade)) %>% 
-  ggplot() +
+  subset(short_title != "-" & !is.na(letter_grade)) %>% 
+ggplot() +
   geom_bar(mapping = aes(x = letter_grade)) +
   facet_grid(institution ~ short_title) +
   scale_y_continuous(name = " ", labels = comma) +
@@ -73,7 +107,7 @@ HxMx %>%
 # ----- Grade x Letter Grade -----
 HxMx %>% 
   subset(!is.na(grade) & grade != 0) %>% 
-  ggplot() +
+ggplot() +
   geom_boxplot(mapping = aes(x = letter_grade, y = grade)) +
   scale_y_continuous() +
   labs(title = "Grade") 
@@ -83,6 +117,6 @@ HxMx %>%
 # ----- First attempt at 2 layer -----
 HxMx %>% 
   subset(!is.na(nchapters) & !is.na(ndays_act)) %>% 
-  ggplot(data = HxMx, mapping = aes(x = nchapters, y = ndays_act)) +
+ggplot(data = HxMx, mapping = aes(x = nchapters, y = ndays_act)) +
   geom_point() +
   geom_smooth()
