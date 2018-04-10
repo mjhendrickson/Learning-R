@@ -43,6 +43,7 @@ ggplot() +
   geom_count(mapping = aes(x = letter_grade, y = institution))
 
 
+
 # ----- Grade x Institution -----
 HxMx %>% 
 ggplot() +
@@ -102,6 +103,18 @@ ggplot() +
         axis.text.x = element_text(angle = 90, vjust = 0.5)) +
   labs(title = "Grade")
 
+# Alternate view - color by institution
+HxMx %>% 
+  subset(short_title != "-" & !is.na(letter_grade) & letter_grade != "F") %>% 
+ggplot() +
+  geom_bar(mapping = aes(x = letter_grade, fill = institution)) +
+  scale_fill_manual(values = c("#C90016", "#8A8B8C")) + # hex colors matching institution
+  facet_grid(. ~ short_title) +
+  scale_y_continuous(name = " ", labels = comma) +
+  theme(axis.title.x = element_blank(),
+        axis.text.x = element_text(angle = 90, vjust = 0.5)) +
+  labs(title = "Grade")
+
 
 
 # ----- Grade x Letter Grade -----
@@ -111,6 +124,16 @@ ggplot() +
   geom_boxplot(mapping = aes(x = letter_grade, y = grade)) +
   scale_y_continuous() +
   labs(title = "Grade") 
+
+# Alternate view - facet by institution
+HxMx %>% 
+  subset(!is.na(grade) & grade != 0) %>% 
+ggplot() +
+  geom_boxplot(mapping = aes(x = letter_grade, y = grade, fill = institution)) +
+  scale_fill_manual(values = c("#C90016", "#8A8B8C")) + # hex colors matching institution
+  facet_grid(. ~ institution) +
+  scale_y_continuous() +
+  labs(title = "Grade")
 
 
 
