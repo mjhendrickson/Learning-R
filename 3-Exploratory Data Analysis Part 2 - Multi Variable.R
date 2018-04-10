@@ -34,13 +34,15 @@ ggplot() +
 HxMx %>% 
   subset(!is.na(grade) & grade != 0) %>% # Remove NA and 0
 ggplot() +
-  geom_count(mapping = aes(x = letter_grade, y = institution))
+  geom_count(mapping = aes(x = letter_grade, y = institution, color = institution)) +
+  scale_color_manual(values = c("#C90016", "#8A8B8C")) # hex colors matching institution
 
 # Remove F's for additional clarity
 HxMx %>% 
   subset(!is.na(grade) & grade != 0 & letter_grade != "F") %>%
 ggplot() +
-  geom_count(mapping = aes(x = letter_grade, y = institution))
+  geom_count(mapping = aes(x = letter_grade, y = institution, color = institution)) +
+  scale_color_manual(values = c("#C90016", "#8A8B8C")) # hex colors matching institution
 
 
 
@@ -75,8 +77,9 @@ ggplot(mapping = aes(x = grade)) +
 # Alternate view - boxplot
 HxMx %>% 
   subset(!is.na(grade) & grade != 0) %>%
-ggplot(mapping = aes(x = institution, y = grade)) +
+ggplot(mapping = aes(x = institution, y = grade, fill = institution)) +
   geom_boxplot() +
+  scale_fill_manual(values = c("#C90016", "#8A8B8C")) + # hex colors matching institution
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Grade") 
@@ -84,8 +87,9 @@ ggplot(mapping = aes(x = institution, y = grade)) +
 # Remove F's for additional clarity
 HxMx %>% 
   subset(!is.na(grade) & grade != 0 & letter_grade != "F") %>%
-ggplot(mapping = aes(x = institution, y = grade)) +
+ggplot(mapping = aes(x = institution, y = grade, fill = institution)) +
   geom_boxplot() +
+  scale_fill_manual(values = c("#C90016", "#8A8B8C")) + # hex colors matching institution
   scale_y_continuous(name = " ", labels = comma) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Grade") 
