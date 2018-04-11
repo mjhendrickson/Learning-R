@@ -103,11 +103,21 @@ ggplot() +
   geom_bar(mapping = aes(x = letter_grade)) +
   facet_grid(institution ~ short_title) +
   scale_y_continuous(name = " ", labels = comma) +
-  theme(axis.title.x = element_blank(),
-        axis.text.x = element_text(angle = 90, vjust = 0.5)) +
+  theme(axis.title.x = element_blank()) +
   labs(title = "Grade")
 
 # Alternate view - color by institution
+HxMx %>% 
+  subset(short_title != "-" & !is.na(letter_grade)) %>% 
+  ggplot() +
+  geom_bar(mapping = aes(x = letter_grade, fill = institution)) +
+  scale_fill_manual(values = c("#C90016", "#8A8B8C")) + # hex colors matching institution
+  facet_grid(. ~ short_title) +
+  scale_y_continuous(name = " ", labels = comma) +
+  theme(axis.title.x = element_blank()) +
+  labs(title = "Grade")
+
+# Alternate view - color by institution, remove 'F's
 HxMx %>% 
   subset(short_title != "-" & !is.na(letter_grade) & letter_grade != "F") %>% 
 ggplot() +
@@ -115,8 +125,18 @@ ggplot() +
   scale_fill_manual(values = c("#C90016", "#8A8B8C")) + # hex colors matching institution
   facet_grid(. ~ short_title) +
   scale_y_continuous(name = " ", labels = comma) +
-  theme(axis.title.x = element_blank(),
-        axis.text.x = element_text(angle = 90, vjust = 0.5)) +
+  theme(axis.title.x = element_blank()) +
+  labs(title = "Grade")
+
+# Alternate view - color by institution, remove 'D's and 'F's
+HxMx %>% 
+  subset(short_title != "-" & !is.na(letter_grade) & letter_grade != "D" & letter_grade != "F") %>% 
+ggplot() +
+  geom_bar(mapping = aes(x = letter_grade, fill = institution)) +
+  scale_fill_manual(values = c("#C90016", "#8A8B8C")) + # hex colors matching institution
+  facet_grid(. ~ short_title) +
+  #scale_y_continuous(name = " ", labels = comma) +
+  theme(axis.title.x = element_blank()) +
   labs(title = "Grade")
 
 
