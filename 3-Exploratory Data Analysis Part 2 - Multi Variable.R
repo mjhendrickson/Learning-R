@@ -175,6 +175,15 @@ ggplot() +
   scale_y_continuous(labels = percent) +
   labs(title = "Grade by Letter Grade Distribution by Institution")
 
+# Alternate view - institutions side x side
+HxMx %>% 
+  subset(!is.na(grade) & grade != 0 & letter_grade != "F") %>% 
+ggplot() +
+  geom_boxplot(mapping = aes(x = letter_grade, y = grade, fill = institution)) +
+  scale_fill_manual(values = c("#C90016", "#8A8B8C")) + # hex colors matching institution
+  scale_y_continuous(labels = percent) +
+  labs(title = "Grade by Letter Grade Distribution by Institution - Removing 'F's")
+
 
 
 # ----- First attempt at 2 layer -----
