@@ -51,11 +51,12 @@ ggplot() +
 # ----- Grade x Institution -----
 HxMx %>% 
 ggplot() +
-  geom_bar(mapping = aes(x = grade), binwidth = 0.05) +
+  geom_histogram(mapping = aes(x = grade), binwidth = 0.05) +
   facet_grid(. ~institution) +
-  scale_y_continuous(name = " ", labels = comma) +
+  scale_x_continuous(labels = percent) +
+  scale_y_continuous(labels = comma) +
   theme(axis.title.x = element_blank()) +
-  labs(title = "Grade") 
+  labs(title = "Grade by Institution") 
 
 # Remove NA and 0
 HxMx %>% 
@@ -63,18 +64,31 @@ HxMx %>%
 ggplot() +
   geom_histogram(mapping = aes(x = grade), binwidth = 0.05) +
   facet_grid(. ~institution) +
-  scale_y_continuous(name = " ", labels = comma) +
+  scale_x_continuous(labels = percent) +
+  scale_y_continuous(labels = comma) +
   theme(axis.title.x = element_blank()) +
-  labs(title = "Grade") 
+  labs(title = "Grade by Institution") 
 
 # Alternate view - frequency
 HxMx %>% 
   subset(!is.na(grade) & grade != 0) %>%
 ggplot(mapping = aes(x = grade)) +
   geom_freqpoly(mapping = aes(color = institution)) +
-  scale_y_continuous(name = " ", labels = comma) +
+  scale_x_continuous(labels = percent) +
+  scale_y_continuous(labels = comma) +
   theme(axis.title.x = element_blank()) +
-  labs(title = "Grade") 
+  labs(title = "Grade by Institution") 
+
+# Alternate view - density, shows standardized counts
+  # Appears much more similar
+HxMx %>% 
+  subset(!is.na(grade) & grade != 0) %>%
+ggplot(mapping = aes(x = grade, y = ..density..)) +
+  geom_freqpoly(mapping = aes(color = institution)) +
+  scale_x_continuous(labels = percent) +
+  scale_y_continuous(labels = comma) +
+  theme(axis.title.x = element_blank()) +
+  labs(title = "Grade by Institution - Standardized by Density") 
 
 # Alternate view - boxplot
 HxMx %>% 
@@ -82,19 +96,19 @@ HxMx %>%
 ggplot(mapping = aes(x = institution, y = grade, fill = institution)) +
   geom_boxplot() +
   scale_fill_manual(values = c("#C90016", "#8A8B8C")) + # hex colors matching institution
-  scale_y_continuous(name = " ", labels = comma) +
+  scale_y_continuous(labels = percent) +
   theme(axis.title.x = element_blank()) +
-  labs(title = "Grade") 
+  labs(title = "Grade Distribution by Institution - Removing '0's") 
 
 # Remove F's for additional clarity
 HxMx %>% 
-  subset(!is.na(grade) & grade != 0 & letter_grade != "F") %>%
+  subset(!is.na(grade) & letter_grade != "F") %>%
 ggplot(mapping = aes(x = institution, y = grade, fill = institution)) +
   geom_boxplot() +
   scale_fill_manual(values = c("#C90016", "#8A8B8C")) + # hex colors matching institution
-  scale_y_continuous(name = " ", labels = comma) +
+  scale_y_continuous(labels = percent) +
   theme(axis.title.x = element_blank()) +
-  labs(title = "Grade") 
+  labs(title = "Grade Distribution by Institution - Removing 'F's") 
 
 
 
@@ -104,20 +118,20 @@ HxMx %>%
 ggplot() +
   geom_bar(mapping = aes(x = letter_grade)) +
   facet_grid(institution ~ short_title) +
-  scale_y_continuous(name = " ", labels = comma) +
+  scale_y_continuous(labels = comma) +
   theme(axis.title.x = element_blank()) +
-  labs(title = "Grade")
+  labs(title = "Letter Grade by Course by Institution")
 
 # Alternate view - color by institution
 HxMx %>% 
   subset(short_title != "-" & !is.na(letter_grade)) %>% 
-  ggplot() +
+ggplot() +
   geom_bar(mapping = aes(x = letter_grade, fill = institution)) +
   scale_fill_manual(values = c("#C90016", "#8A8B8C")) + # hex colors matching institution
   facet_grid(. ~ short_title) +
-  scale_y_continuous(name = " ", labels = comma) +
+  scale_y_continuous(labels = comma) +
   theme(axis.title.x = element_blank()) +
-  labs(title = "Grade")
+  labs(title = "Letter Grade by Course by Institution")
 
 # Alternate view - color by institution, remove 'F's
 HxMx %>% 
@@ -126,9 +140,9 @@ ggplot() +
   geom_bar(mapping = aes(x = letter_grade, fill = institution)) +
   scale_fill_manual(values = c("#C90016", "#8A8B8C")) + # hex colors matching institution
   facet_grid(. ~ short_title) +
-  scale_y_continuous(name = " ", labels = comma) +
+  scale_y_continuous(labels = comma) +
   theme(axis.title.x = element_blank()) +
-  labs(title = "Grade")
+  labs(title = "Letter Grade by Course by Institution - Removing 'F's")
 
 # Alternate view - color by institution, remove 'D's and 'F's
 HxMx %>% 
@@ -137,9 +151,9 @@ ggplot() +
   geom_bar(mapping = aes(x = letter_grade, fill = institution)) +
   scale_fill_manual(values = c("#C90016", "#8A8B8C")) + # hex colors matching institution
   facet_grid(. ~ short_title) +
-  #scale_y_continuous(name = " ", labels = comma) +
+  scale_y_continuous(labels = comma) +
   theme(axis.title.x = element_blank()) +
-  labs(title = "Grade")
+  labs(title = "Letter Grade by Course by Institution - Removing 'D's & 'F's")
 
 
 
@@ -148,8 +162,8 @@ HxMx %>%
   subset(!is.na(grade) & grade != 0) %>% 
 ggplot() +
   geom_boxplot(mapping = aes(x = letter_grade, y = grade)) +
-  scale_y_continuous() +
-  labs(title = "Grade") 
+  scale_y_continuous(labels = percent) +
+  labs(title = "Grade by Letter Grade Distribution") 
 
 # Alternate view - facet by institution
 HxMx %>% 
@@ -158,8 +172,8 @@ ggplot() +
   geom_boxplot(mapping = aes(x = letter_grade, y = grade, fill = institution)) +
   scale_fill_manual(values = c("#C90016", "#8A8B8C")) + # hex colors matching institution
   facet_grid(. ~ institution) +
-  scale_y_continuous() +
-  labs(title = "Grade")
+  scale_y_continuous(labels = percent) +
+  labs(title = "Grade by Letter Grade Distribution by Institution")
 
 
 
