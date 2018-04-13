@@ -27,7 +27,7 @@ HxMx %>%
   subset(!is.na(grade) & grade != 0) %>% # Remove NA and 0
 ggplot() +
   geom_point(mapping = aes(x = institution, y = grade, color = letter_grade)) +
-  scale_y_continuous(name = " ", labels = comma) +
+  scale_y_continuous(labels = percent) +
   labs(title = "Grades by Institution")
 
 # Alternate comparison
@@ -35,14 +35,16 @@ HxMx %>%
   subset(!is.na(grade) & grade != 0) %>% # Remove NA and 0
 ggplot() +
   geom_count(mapping = aes(x = letter_grade, y = institution, color = institution)) +
-  scale_color_manual(values = c("#C90016", "#8A8B8C")) # hex colors matching institution
+  scale_color_manual(values = c("#C90016", "#8A8B8C")) + # hex colors matching institution
+  labs(title = "Letter Grade by Institution")
 
 # Remove F's for additional clarity
 HxMx %>% 
   subset(!is.na(grade) & grade != 0 & letter_grade != "F") %>%
 ggplot() +
   geom_count(mapping = aes(x = letter_grade, y = institution, color = institution)) +
-  scale_color_manual(values = c("#C90016", "#8A8B8C")) # hex colors matching institution
+  scale_color_manual(values = c("#C90016", "#8A8B8C")) + # hex colors matching institution
+  labs(title = "Letter Grade by Institution")
 
 
 
