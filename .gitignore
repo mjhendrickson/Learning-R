@@ -26,6 +26,7 @@ Learn R by Doing.rmd
 *.knit.md
 
 # Data Files
+# You can download data files here: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/26147
 HMXPC13_DI_v2_5-14-14.csv
 hxmitx_course_reference.csv
 HxMx.csv
