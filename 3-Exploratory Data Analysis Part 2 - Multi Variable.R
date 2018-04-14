@@ -186,6 +186,26 @@ ggplot() +
 
 
 
+# ----- Registered, Viewed, Explored, Certified -----
+# First Attempt
+HxMx %>% 
+  subset(!is.na(viewed) & !is.na(explored)) %>% # Remove NA and 0
+ggplot() +
+  geom_count(mapping = aes(x = viewed, y = explored)) +
+  scale_x_continuous(breaks = c(0, 1), labels = comma) +
+  scale_y_continuous(breaks = c(0, 1), labels = comma) +
+  labs(title = "Viewed by Explored")
+
+HxMx %>% 
+  subset(!is.na(viewed) & !is.na(explored)) %>% # Remove NA and 0
+ggplot() +
+  geom_count(mapping = aes(x = viewed, y = explored)) +
+  scale_x_discrete(breaks = c(0, 1), labels = comma) +
+  scale_y_discrete(breaks = c(0, 1), labels = comma) +
+  labs(title = "Viewed by Explored")
+
+
+
 # ----- First attempt at 2 layer -----
 HxMx %>% 
   subset(!is.na(nchapters) & !is.na(ndays_act)) %>% 
