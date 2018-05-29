@@ -97,6 +97,7 @@ HXMITX$nchapters_ind <-     ifelse(HXMITX$nchapters >= 1, 1,0)
 HXMITX$nforum_posts_ind <-  ifelse(HXMITX$nforum_posts >= 1, 1,0)
 
 # Create binary indicator for future modeling
+set.seed(123)
 HXMITX$treatment <-         rbinom(n = 641138, size = 1, prob = 0.5)
 
 # CONSIDER BINS FOR nevents, ndays_act, nplay_video, nchapters
