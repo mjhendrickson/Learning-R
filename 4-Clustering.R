@@ -14,8 +14,7 @@ HxMx <- read_csv("HxMx.csv")
 glimpse(HxMx)
 
 # ----- Next Steps -----
-# 1. Finish Characters as Factors
-# 2. Characters as Numeric
+# 1. Remove fields as needed, but don't overwrite .csv
 
 
 
@@ -29,7 +28,7 @@ unique(HxMx$course_id)
 # Check if field is a factor
 levels(HxMx$course_id)
 # Change field to a factor
-HxMx$course_id_f <- as.factor(HxMx$course_id) %>% 
+HxMx$course_id <- as.factor(HxMx$course_id) %>% 
   factor(levels = c(
     "HarvardX/CB22x/2013_Spring",
     "HarvardX/CS50x/2012",
@@ -51,7 +50,7 @@ HxMx$course_id_f <- as.factor(HxMx$course_id) %>%
   ordered = FALSE
   )
 # Ensure levels took and are accurate
-levels(HxMx$course_id_f)
+levels(HxMx$course_id)
 
 
 
@@ -61,7 +60,7 @@ unique(HxMx$final_cc_cname_DI)
 # Check if field is a factor
 levels(HxMx$final_cc_cname_DI)
 # Change field to a factor
-HxMx$final_cc_cname_DI_f <- as.factor(HxMx$final_cc_cname_DI) %>% 
+HxMx$final_cc_cname_DI <- as.factor(HxMx$final_cc_cname_DI) %>% 
   factor(levels = c(
     "United States",
     "France",
@@ -101,7 +100,7 @@ HxMx$final_cc_cname_DI_f <- as.factor(HxMx$final_cc_cname_DI) %>%
   ordered = FALSE
   )
 # Ensure levels took and are accurate
-levels(HxMx$final_cc_cname_DI_f)
+levels(HxMx$final_cc_cname_DI)
 
 
 
@@ -111,7 +110,7 @@ unique(HxMx$LoE_DI)
 # Check if field is a factor
 levels(HxMx$LoE_DI)
 # Change field to a factor
-HxMx$LoE_DI_f <- as.factor(HxMx$LoE_DI) %>% 
+HxMx$LoE_DI <- as.factor(HxMx$LoE_DI) %>% 
   factor(levels = c(
     "Less than Secondary",
     "Secondary",
@@ -122,7 +121,7 @@ HxMx$LoE_DI_f <- as.factor(HxMx$LoE_DI) %>%
   ordered = TRUE
   )
 # Ensure levels took and are accurate
-levels(HxMx$LoE_DI_f)
+levels(HxMx$LoE_DI)
 
 
 
@@ -132,7 +131,7 @@ unique(HxMx$gender)
 # Check if field is a factor
 levels(HxMx$gender)
 # Change field to a factor
-HxMx$gender_f <- as.factor(HxMx$gender) %>% 
+HxMx$gender <- as.factor(HxMx$gender) %>% 
   factor(levels = c(
     "m",
     "f",
@@ -141,7 +140,7 @@ HxMx$gender_f <- as.factor(HxMx$gender) %>%
   ordered = FALSE
   )
 # Ensure levels took and are accurate
-levels(HxMx$gender_f)
+levels(HxMx$gender)
 
 
 
@@ -151,7 +150,7 @@ unique(HxMx$institution)
 # Check if field is a factor
 levels(HxMx$institution)
 # Change field to a factor
-HxMx$institution_f <- as.factor(HxMx$institution) %>% 
+HxMx$institution <- as.factor(HxMx$institution) %>% 
   factor(levels = c(
     "HarvardX",
     "MITx"
@@ -159,7 +158,7 @@ HxMx$institution_f <- as.factor(HxMx$institution) %>%
   ordered = FALSE
   )
 # Ensure levels took and are accurate
-levels(HxMx$institution_f)
+levels(HxMx$institution)
 
 
 
@@ -169,7 +168,7 @@ unique(HxMx$course_code)
 # Check if field is a factor
 levels(HxMx$course_code)
 # Change field to a factor
-HxMx$course_code_f <- as.factor(HxMx$course_code) %>% 
+HxMx$course_code <- as.factor(HxMx$course_code) %>% 
   factor(levels = c(
     "CB22x",
     "CS50x",
@@ -188,7 +187,7 @@ HxMx$course_code_f <- as.factor(HxMx$course_code) %>%
   ordered = FALSE
   )
 # Ensure levels took and are accurate
-levels(HxMx$course_code_f)
+levels(HxMx$course_code)
 
 
 
@@ -198,7 +197,7 @@ unique(HxMx$term)
 # Check if field is a factor
 levels(HxMx$term)
 # Change field to a factor
-HxMx$term_f <- as.factor(HxMx$term) %>% 
+HxMx$term <- as.factor(HxMx$term) %>% 
   factor(levels = c(
     "Fall",
     "Spring",
@@ -207,7 +206,7 @@ HxMx$term_f <- as.factor(HxMx$term) %>%
   ordered = FALSE
   )
 # Ensure levels took and are accurate
-levels(HxMx$term_f)
+levels(HxMx$term)
 
 
 
@@ -217,7 +216,7 @@ unique(HxMx$short_title)
 # Check if field is a factor
 levels(HxMx$short_title)
 # Change field to a factor
-HxMx$short_title_f <- as.factor(HxMx$short_title) %>% 
+HxMx$short_title <- as.factor(HxMx$short_title) %>% 
   factor(levels = c(
     "HeroesX",
     "-",
@@ -236,7 +235,7 @@ HxMx$short_title_f <- as.factor(HxMx$short_title) %>%
   ordered = FALSE
   )
 # Ensure levels took and are accurate
-levels(HxMx$short_title_f)
+levels(HxMx$short_title)
 
 
 
@@ -246,7 +245,7 @@ unique(HxMx$full_title)
 # Check if field is a factor
 levels(HxMx$full_title)
 # Change field to a factor
-HxMx$full_title_f <- as.factor(HxMx$full_title) %>% 
+HxMx$full_title <- as.factor(HxMx$full_title) %>% 
   factor(levels = c(
     "The Ancient Greek Hero",
     "Introduction to Computer Science I",
@@ -265,7 +264,7 @@ HxMx$full_title_f <- as.factor(HxMx$full_title) %>%
   ordered = FALSE
   )
 # Ensure levels took and are accurate
-levels(HxMx$full_title_f)
+levels(HxMx$full_title)
 
 
 
@@ -275,7 +274,7 @@ unique(HxMx$semester)
 # Check if field is a factor
 levels(HxMx$semester)
 # Change field to a factor
-HxMx$semester_f <- as.factor(HxMx$semester) %>% 
+HxMx$semester <- as.factor(HxMx$semester) %>% 
   factor(levels = c(
     "Spring-Summer 2013",
     "Fall 2012 - Spring 2013",
@@ -287,18 +286,21 @@ HxMx$semester_f <- as.factor(HxMx$semester) %>%
   ordered = FALSE
   )
 # Ensure levels took and are accurate
-levels(HxMx$semester_f)
-
-
-
-# ===== Write HxMx to .csv for recall after refreshing session =====
-> write_csv(HxMx, "HxMx.csv")
+levels(HxMx$semester)
 
 
 
 # ----- Set Characters as Numeric -----
-#HxMx$YoB_n <- as.numeric(HxMx$YoB)
+class(HxMx$YoB) # Check class
+HxMx$YoB_i <- as.integer(HxMx$YoB)
+class(HxMx$YoB_i) # Check new class
 
+
+
+# ===== Write HxMx to .csv for recall after refreshing session =====
+write_csv(HxMx, "HxMx.csv")
+
+# ----- R
 
 # ----- Scale Data -----
 #scale(HxMx)
