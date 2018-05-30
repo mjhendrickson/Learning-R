@@ -116,6 +116,9 @@ summary(HxMx) # basic summary info
 rm(HXMITX)
 rm(courses)
 
+# Drop roles as all records are NULL
+HxMx$roles <- NULL
+
 
 
 # ----- Set Characters as Factors -----
