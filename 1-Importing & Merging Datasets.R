@@ -387,6 +387,13 @@ levels(HxMx$semester)
 
 
 
+# ----- Set Characters as Numeric -----
+class(HxMx$YoB) # Check class
+HxMx$YoB <- as.integer(HxMx$YoB)
+class(HxMx$YoB) # Check new class
+
+
+
 # ===== Write HxMx to .rds for recall after refreshing session =====
 # write_csv(HxMx, "HxMx.csv") -- removed to save as .rds instead
 saveRDS(HxMx, "HxMx.rds") # saves factors in file
