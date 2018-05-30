@@ -34,6 +34,9 @@ HxMx.rds
 Person Course Deidentification.pdf
 Person Course Documentation.pdf
 
+# Temporary .R files used as placeholders or that were moved
+X-Modeling.R
+
 # Jupyter Notebook Files
 Learn R by Doing Jupyter Nobebook.ipynb
 Learn R by Doing Jupyter Nobebook-checkpoint.ipynb
