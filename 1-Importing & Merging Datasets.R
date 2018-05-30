@@ -387,8 +387,9 @@ levels(HxMx$semester)
 
 
 
-# ===== Write HxMx to .csv for recall after refreshing session =====
-write_csv(HxMx, "HxMx.csv")
+# ===== Write HxMx to .rds for recall after refreshing session =====
+# write_csv(HxMx, "HxMx.csv") -- removed to save as .rds instead
+saveRDS(HxMx, "HxMx.rds") # saves factors in file
 
 
 
