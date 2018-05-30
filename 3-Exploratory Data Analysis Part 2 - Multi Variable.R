@@ -10,7 +10,8 @@ library(scales)
 library(binr)
 
 # ----- Open HxMx after session refresh -----
-HxMx <- read_csv("HxMx.csv")
+# HxMx <- read_csv("HxMx.csv") # update to .rds
+HxMx <- readRDS("HxMx.rds")
 glimpse(HxMx)
 
 # ----- Next Steps -----

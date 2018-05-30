@@ -10,7 +10,8 @@ library(tidyverse)
 #library(factoextra)
 
 # ----- Open HxMx after session refresh -----
-HxMx <- read_csv("HxMx.csv")
+# HxMx <- read_csv("HxMx.csv") # update to .rds
+HxMx <- readRDS("HxMx.rds")
 glimpse(HxMx)
 
 # ----- Next Steps -----
@@ -30,8 +31,8 @@ class(HxMx$YoB_i) # Check new class
 
 
 
-# ===== Write HxMx to .csv for recall after refreshing session =====
-#write_csv(HxMx, "HxMx.csv")
+# ===== Write HxMx to .rds for recall after refreshing session =====
+# saveRDS(HxMx, "HxMx.rds")
 
 
 
