@@ -1,8 +1,7 @@
 # Learning-R
 Project for learning R
 
-Shared at SatRday DC 2018 (December 8, 2018) - will go live 12/8
-
+Shared at SatRday DC 2018 (December 8, 2018)
 http://bit.ly/satRday2018mh
 
 This project was created to learn R through doing.
